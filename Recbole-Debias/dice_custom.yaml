@@ -1,0 +1,20 @@
+# DICE Custom Configuration
+learning_rate: 0.005
+embedding_size: 16
+train_batch_size: 2048
+dis_pen: 0.005
+int_weight: 0.5
+pop_weight: 0.0001
+
+# Dataset Settings for pre-split
+benchmark_filename: ['train', 'valid', 'test']
+load_col:
+    inter: [user_id, item_id, rating, timestamp, intervene_mask]
+eval_args:
+    mode: full
+    order: RO
+    group_by: user
+
+eval_neg_sample_args:
+    distribution: uniform
+    sample_num: 1

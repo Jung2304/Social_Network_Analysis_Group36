@@ -1,0 +1,19 @@
+# MF-IPS User Configuration
+learning_rate: 0.005
+embedding_size: 16
+train_batch_size: 256
+eta: 0.5
+pscore_method: 'user'
+
+# Dataset Settings for pre-split
+benchmark_filename: ['train', 'valid', 'test']
+load_col:
+    inter: [user_id, item_id, rating, timestamp, intervene_mask]
+eval_args:
+    mode: full
+    order: RO
+    group_by: user
+
+eval_neg_sample_args:
+    distribution: uniform
+    sample_num: 1
