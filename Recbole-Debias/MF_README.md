@@ -3,66 +3,60 @@
 
 ## 1. Ý tưởng cốt lõi & Kiến trúc
 ### Khái niệm
-Mô hình cơ sở Matrix Factorization (MF) thực hiện phương pháp **Yếu tố Tiềm ẩn (Latent Factor Approach)** tiêu chuẩn. Mô hình giả định rằng cả người dùng và mục phẩm đều có thể được đặc trưng bởi một tập hợp các yếu tố tiềm ẩn (embeddings) trong một không gian vector chiều thấp.
+Mô hình cơ sở Matrix Factorization (MF) thực hiện phương pháp **Yếu tố Tiềm ẩn (Latent Factor Approach)** tiêu chuẩn. Mô hình giả định rằng cả người dùng và sản phẩm đều có thể được đại diện bằng các đặc trưng ẩn (embeddings) trong một không gian toán học nhỏ gọn.
 
 ### Mục tiêu
-Mục tiêu chính là phân rã ma trận tương tác Người dùng-Mục phẩm thưa thớt $R$ thành hai ma trận có hạng thấp hơn: $P$ (các yếu tố tiềm ẩn của Người dùng) và $Q$ (các yếu tố tiềm ẩn của Mục phẩm). Bằng cách học các embeddings này, mô hình có thể dự đoán các giá trị còn thiếu trong ma trận tương tác, đại diện cho sở thích chưa quan sát được của người dùng.
+Mục tiêu chính là phân tích lịch sử tương tác giữa Người dùng và Sản phẩm để tìm ra các mối liên hệ ngầm. Bằng cách học các đặc trưng này, mô hình có thể dự đoán mức độ yêu thích của người dùng đối với các sản phẩm mà họ chưa từng xem qua.
 
 ### Đầu vào/Đầu ra
-- **Đầu vào:** User ID và Item ID từ lịch sử tương tác.
-- **Đầu ra:** Điểm số sở thích dự đoán $\hat{r}_{ui}$, được tính bằng tích vô hướng của các embeddings tương ứng của người dùng và mục phẩm:
-  $$\hat{r}_{ui} = p_u^\top q_i = \sum_{k=1}^d p_{uk} \cdot q_{ik}$$
-  trong đó $d$ là số chiều của không gian tiềm ẩn (`embedding_size`).
+- **Đầu vào:** Mã định danh Người dùng (User ID) và Mã định danh Sản phẩm (Item ID).
+- **Đầu ra:** Điểm số dự đoán mức độ ưu tiên. Điểm số này được tính bằng cách so khớp (tình tích vô hướng) giữa vector đặc trưng của người dùng và vector đặc trưng của sản phẩm. Nếu hai vector này "cùng hướng" hoặc tương đồng, điểm số sẽ cao, nghĩa là người dùng có khả năng thích sản phẩm đó.
 
 ## 2. Quy trình Xử lý Dữ liệu
 ### Bộ dữ liệu
-Chúng tôi sử dụng các tệp từ bộ dữ liệu **ml-100k**. Quy trình tuân theo các bước cấu trúc sau:
-1.  **Tải dữ liệu:** Các tệp tương tác được tải vào môi trường RecBole.
-2.  **Lọc dữ liệu:** Bộ lọc tương tác tối thiểu (`min_user_inter=1`, `min_item_inter=1`) đảm bảo mật độ dữ liệu để ước tính các yếu tố tiềm ẩn.
-3.  **Phân chia:** Dữ liệu được chia thành các tập huấn luyện/kiểm định **Thông thường (Normal)** và một **Tập kiểm thử Can thiệp (Intervened Test Set)** chuyên biệt.
-4.  **Intervene Mask:** Cột `intervene_mask` đóng vai trò quan trọng trong việc đánh giá mô hình MF trong **điều kiện không thiên kiến (unbiased)**. Bằng cách lọc các tương tác kiểm thử nơi sự thiên kiến phổ biến (popularity bias) được giảm thiểu (mô phỏng phân phối đồng nhất), chúng tôi có thể đo lường độ chính xác ngữ nghĩa thực sự của mô hình so với xu hướng chạy theo các mục phẩm phổ biến.
+Chúng tôi sử dụng bộ dữ liệu **ml-100k**. Quy trình tuân theo các bước sau:
+1.  **Tải dữ liệu:** Đưa các tệp tương tác vào hệ thống huấn luyện.
+2.  **Lọc dữ liệu:** Chỉ giữ lại những người dùng và sản phẩm có ít nhất một tương tác để đảm bảo dữ liệu đủ chất lượng để học.
+3.  **Phân chia:** Chia dữ liệu thành các tập huấn luyện (để học), tập kiểm định (để tinh chỉnh) và một **Tập kiểm thử Can thiệp** đặc biệt.
+4.  **Đánh giá không thiên kiến:** Chúng tôi sử dụng một cơ chế lọc đặc biệt (intervene mask) để kiểm tra xem mô hình thực sự hiểu sở hữu của người dùng hay chỉ đơn giản là gợi ý các sản phẩm đang "hot". Điều này giúp đo lường độ chính xác thực tế khi loại bỏ yếu tố chạy theo đám đông.
 
 ## 3. Chỉ số & Kết quả Thực nghiệm
-Mô hình được đánh giá bằng các chỉ số xếp hạng top-k tiêu chuẩn trên tập kiểm thử can thiệp.
+Mô hình được đánh giá dựa trên khả năng đưa ra danh sách gợi ý tốt nhất cho người dùng.
 
 ### Kết quả Thực thi
 | Chỉ số | Kết quả |
 | :--- | :---: |
-| **Recall@10** | 0.0855 |
-| **MRR@10** | 0.1915 |
-| **NDCG@10** | 0.0998 |
-| **Hit@10** | 0.5271 |
-| **Precision@10** | 0.0794 |
+| **Recall@10** (Khả năng tìm đúng) | 0.0855 |
+| **MRR@10** (Độ chính xác thứ hạng) | 0.1915 |
+| **NDCG@10** (Độ tối ưu danh sách) | 0.0998 |
+| **Hit@10** (Tỷ lệ gợi ý trúng) | 0.5271 |
 
 ### Phân tích Kết quả
-- **Recall cao vs. MRR thấp:** Mô hình đạt được chỉ số **Recall@10 (0.0855)** và **Hit@10 (0.5271)** khá cạnh tranh, cho thấy nó hiệu quả trong việc tìm ra các mục phẩm phù hợp.
-- **Chất lượng Xếp hạng:** Tuy nhiên, **MRR@10 (0.1915)** thấp hơn so với các mô hình khử nhiễu tiên tiến (như DICE). Điều này cho thấy mặc dù MF có thể xác định đúng mục phẩm, nó thường xếp chúng ở vị trí thấp hơn trong danh sách top-k vì thiếu khả năng gỡ rối ngữ nghĩa (semantic disentanglement) cần thiết để ưu tiên sở thích ngách của người dùng thay vì các tín hiệu chạy theo đám đông.
+- **Gợi ý trúng tốt nhưng thứ hạng chưa cao:** Mô hình MF cơ bản có khả năng tìm ra các sản phẩm người dùng thích khá tốt (Hit@10 đạt hơn 52%).
+- **Hạn chế:** Tuy nhiên, thứ hạng của các sản phẩm đúng trong danh sách thường không đứng ở vị trí đầu tiên (MRR thấp hơn các mô hình tiên tiến). Điều này là do MF dễ bị ảnh hưởng bởi những sản phẩm phổ biến, dẫn đến việc ưu tiên các sản phẩm "xu hướng" thay vì các sản phẩm thực sự phù hợp với sở thích cá nhân cụ thể của người dùng.
 
 ## 4. Siêu tham số & Tối ưu hóa
-Các siêu tham số sau đã được tối ưu hóa để đảm bảo sự ổn định và hội tụ trên quy mô của ml-100k:
-- `learning_rate`: **0.005**
-- `embedding_size`: **16**
-- `batch_size`: **2048**
-- `optimizer`: **Adam**
+Các thông số cài đặt giúp mô hình hoạt động ổn định:
+- **Tốc độ học (Learning Rate):** 0.005 (giúp mô hình học từ từ và ổn định).
+- **Độ lớn đặc trưng (Embedding Size):** 16 (số lượng đặc trưng dùng để mô tả người dùng/sản phẩm).
+- **Kích thước lô (Batch Size):** 2048 (số lượng dữ liệu xử lý cùng lúc).
 
-**Tốc độ Hội tụ:** Nhờ việc triển khai hiệu quả trên CPU, mô hình đạt được sự hội tụ với tốc độ xấp xỉ **~0.1 giây mỗi epoch**, thường ổn định trong vòng 30-40 epochs.
+**Hiệu suất:** Trên máy tính thông thường, mô hình học rất nhanh, chỉ mất khoảng **0.1 giây** cho mỗi vòng lặp huấn luyện.
 
 ## 5. Hàm mất mát: BPR Loss
-Mô hình được tối ưu hóa bằng hàm mất mát **Bayesian Personalized Ranking (BPR) Loss**, được định nghĩa là:
-$$\mathcal{L}_{BPR} = -\sum_{(u, i, j) \in D} \ln \sigma(\hat{r}_{ui} - \hat{r}_{uj}) + \lambda \|\Theta\|^2$$
-trong đó $i$ là tương tác dương, $j$ là tương tác âm được lấy mẫu, và $\Theta$ đại diện cho các tham số của mô hình.
+Chúng tôi sử dụng phương pháp **Xếp hạng cá nhân hóa (BPR)**. 
 
-**Tại sao chọn Pairwise?** Xếp hạng theo cặp (BPR) vượt trội hơn so với hồi quy theo điểm (Pointwise) trong các hệ thống gợi ý vì nó tập trung vào **thứ tự tương đối** của các mục phẩm thay vì giá trị xếp hạng tuyệt đối, điều này phù hợp hơn với bản chất ưu tiên xếp hạng của người dùng.
+Thay vì cố gắng dự đoán chính xác số điểm người dùng sẽ chấm, mô hình tập trung vào việc học cách **so sánh**: Làm sao để sản phẩm mà người dùng đã mua/xem phải có điểm số cao hơn những sản phẩm mà họ bỏ qua. Phương pháp này hiệu quả hơn vì trong thực tế, thứ tự ưu tiên quan trọng hơn điểm số tuyệt đối.
 
 ## 6. Đánh giá Mô hình: Ưu & Nhược điểm
 ### Ưu điểm
-- **Khả năng mở rộng:** Độ phức tạp tính toán tăng tuyến tính theo số lượng tương tác.
-- **Tốc độ:** Huấn luyện cực nhanh và thời gian suy luận dưới một phần nghìn giây.
-- **Mô hình cơ sở mạnh mẽ:** Cung cấp mức hiệu năng nền tảng vững chắc cho bất kỳ tác vụ gợi ý nào.
+- **Dễ triển khai:** Hoạt động tốt ngay cả với lượng dữ liệu lớn.
+- **Tốc độ cực nhanh:** Phù hợp cho các ứng dụng cần phản hồi tức thì.
+- **Hiệu quả nền tảng:** Luôn là tiêu chuẩn để so sánh với các mô hình phức tạp hơn.
 
 ### Nhược điểm
-- **Thiên kiến phổ biến (Popularity Bias):** Vốn dĩ nắm bắt các thiên kiến trong dữ liệu, thường gợi ý những gì "phổ biến" thay vì những gì mang tính "cá nhân".
-- **Thiếu ngữ cảnh:** Không thể kết hợp các thông tin phụ hoặc động lực thời gian.
+- **Chạy theo đám đông:** Dễ bị đánh lừa bởi các sản phẩm phổ biến.
+- **Thiếu linh hoạt:** Không hiểu được các yếu tố ngữ cảnh (như thời gian, vị trí).
 
 ---
-*Được tạo bởi Antigravity - Senior ML Technical Writer*
+*Dịch và hiệu chỉnh bởi Antigravity*
