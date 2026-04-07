@@ -1,0 +1,2 @@
+learning_rate [0.01, 0.005, 0.001]
+embedding_size [16, 64]
