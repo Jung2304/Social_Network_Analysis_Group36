@@ -11,18 +11,15 @@ Báo cáo này tổng hợp toàn bộ kết quả thực nghiệm của Giai đ
 ## 2. Kiến trúc Matrix Factorization (MF)
 
 ### 2.1. Ý tưởng cốt lõi
-MF thực hiện phương pháp **Yếu tố Tiềm ẩn (Latent Factor)**, giả định người dùng $u$ và vật phẩm $i$ có thể biểu diễn bằng các vector $p_u, q_i \in \mathbb{R}^d$.
+MF thực hiện phương pháp **Yếu tố Tiềm ẩn (Latent Factor)**, giả định người dùng và vật phẩm có thể được đại diện bằng các vector đặc trưng (embeddings) trong một không gian toán học nhỏ gọn.
 
-### 2.2. Công thức dự đoán $r_{ui}$
-Mô hình dự đoán mức độ tương tác thông qua tích vô hướng của các latent vectors:
+### 2.2. Công thức dự đoán
+Mô hình dự đoán mức độ tương tác thông qua việc tính toán sự tương đồng giữa các vector đặc trưng. Cụ thể, điểm số được tính bằng cách nhân các thành phần tương ứng của vector người dùng và vector vật phẩm rồi cộng lại (tích vô hướng). Nếu hai vector càng "cùng hướng" hoặc tương đồng, điểm số dự đoán sẽ càng cao, nghĩa là người dùng có khả năng thích sản phẩm đó.
 
-$$ \hat{r}_{ui} = p_{u} \cdot q_{i}^{T} = \sum_{k=1}^{d} p_{uk} q_{ik} $$
-
-### 2.3. Hàm mất mát (Loss Function) BPR
-Hệ thống sử dụng **Bayesian Personalized Ranking (BPR)** loss để tối ưu thứ hạng:
-
-$$ \mathcal{L} = \sum_{(u, i, j) \in D} -\ln \sigma(\hat{r}_{ui} - \hat{r}_{uj}) + \lambda \|\Theta\|^{2} $$
-*Trong đó $i$ là item tương tác (positive) và $j$ là item được lấy mẫu âm (negative).*
+### 2.3. Cơ chế tối ưu (Hàm mất mát BPR)
+Hệ thống sử dụng phương pháp **Xếp hạng cá nhân hóa (BPR)** để tối ưu thứ hạng:
+- Thay vì dự đoán điểm số tuyệt đối, mô hình tập trung vào việc **so sánh**: Đảm bảo rằng sản phẩm mà người dùng đã tương tác (tích cực) phải có điểm số cao hơn những sản phẩm mà họ chưa từng xem.
+- Mô hình cũng bao gồm các thành phần kiểm soát kỹ thuật để ngăn chặn hiện tượng "học vẹt", đảm bảo khả năng gợi ý tốt trên cả dữ liệu mới.
 
 ---
 
@@ -106,10 +103,10 @@ Quá trình huấn luyện DICE (62 epochs) cho thấy sự cân bằng giữa s
 - **Click Loss (BPR)**: Giảm từ 51.82 xuống **8.82**.
 - **Disentanglement Loss**: Duy trì mức **~13.02**, tạo áp lực buộc embeddings không được trùng lặp.
 
-### 7.2. Embedding Similarity Audit
-Kết quả đo lường độ tương đồng Cosine giữa vector Interest ($E_{int}$) và Conformity ($E_{pop}$):
-- **Item Similarity: 0.3306** (Phân tách tốt, model hiểu phim nào hot vs phim nào hay).
-- **User Similarity: 0.9992** (Phân tách kém, người dùng ml-100k thường có xu hướng thích phim vì nó phổ biến).
+### 7.2. Kiểm tra độ tương đồng (Embedding Similarity Audit)
+Kết quả đo lường mức độ tương quan giữa vector **Sở thích thực (Interest)** và vector **Xu hướng (Conformity)**:
+- **Độ tương đồng Vật phẩm (Item Similarity): 0.3306** (Phân tách tốt, mô hình hiểu rõ sự khác biệt giữa phim "hot" và phim phù hợp với sở thích).
+- **Độ tương đồng Người dùng (User Similarity): 0.9992** (Phân tách chưa tốt, người dùng thường có xu hướng xem phim vì nó phổ biến).
 
 **Code thực hiện Audit**:
 ```python
