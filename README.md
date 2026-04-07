@@ -1,9 +1,4 @@
 # PHASE 1: MATRIX FACTORIZATION COMPLETE REPORT & DEEP AUDIT
-**Dự án**: RecBole-Debias Reproducibility & Analysis
-**Ngày báo cáo**: 07/04/2026
-**Vai trò**: Lead System Auditor & Senior ML Documentation Architect
-
----
 
 ## 1. Tóm tắt dự án (Executive Summary)
 Báo cáo này tổng hợp toàn bộ kết quả thực nghiệm của Giai đoạn 1 (Phase 1), tập trung vào mô hình cơ sở **Matrix Factorization (MF)** và phân tích sâu về cơ chế **Disentanglement (DICE)** trên tập dữ liệu **ml-100k**. 
