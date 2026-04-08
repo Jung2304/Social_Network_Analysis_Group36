@@ -1,0 +1,10 @@
+# Runtime artifacts
+/log/
+/saved/
+*.log
+*.pth
+
+# Local editor files
+.vscode/
+.idea/
+*.pyc
