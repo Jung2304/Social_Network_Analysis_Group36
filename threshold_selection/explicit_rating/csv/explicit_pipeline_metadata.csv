@@ -1,0 +1,9 @@
+﻿key,value
+interactions_path,d:\NAM3_UIT\HK2\MXH\Data\goodreads_interactions_poetry.json
+total_rows_after_explicit_clean,1228992
+k_values,"1,3,5,8,10,15,20"
+kneedle_elbow,8
+selected_k,5
+final_rows_after_kcore,816905
+min_user_degree_after,5
+min_item_degree_after,5
