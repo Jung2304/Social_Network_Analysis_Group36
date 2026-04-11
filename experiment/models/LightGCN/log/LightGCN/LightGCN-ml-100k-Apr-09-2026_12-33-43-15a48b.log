@@ -1,0 +1,1409 @@
+Thu 09 Apr 2026 12:33:43 INFO  ['experiment/models/LightGCN/run_lightgcn_experiments.py', '--fast']
+Thu 09 Apr 2026 12:33:43 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = D:\Miniconda\envs\recbole\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = False
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 40
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 2
+stopping_step = 4
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 8192
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+n_layers = 2
+reg_weight = 1e-05
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.GENERAL
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 09 Apr 2026 12:33:43 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Thu 09 Apr 2026 12:33:44 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Thu 09 Apr 2026 12:33:44 INFO  [Evaluation]: eval_batch_size = [8192] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 09 Apr 2026 12:33:44 INFO  LightGCN(
+  (user_embedding): Embedding(944, 64)
+  (item_embedding): Embedding(1683, 64)
+  (mf_loss): BPRLoss()
+  (reg_loss): EmbLoss()
+)
+Trainable parameters: 168128
+Thu 09 Apr 2026 12:33:44 INFO  FLOPs: 0.0
+Thu 09 Apr 2026 12:33:47 INFO  epoch 0 training [time: 1.62s, train loss: 13.8485]
+Thu 09 Apr 2026 12:33:49 INFO  epoch 1 training [time: 1.65s, train loss: 13.6863]
+Thu 09 Apr 2026 12:33:49 INFO  epoch 1 evaluating [time: 0.17s, valid_score: 0.256300]
+Thu 09 Apr 2026 12:33:49 INFO  valid result: 
+recall@10 : 0.1271    mrr@10 : 0.2563    ndcg@10 : 0.1341    hit@10 : 0.579    precision@10 : 0.0911
+Thu 09 Apr 2026 12:33:49 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-33-44.pth
+Thu 09 Apr 2026 12:33:51 INFO  epoch 2 training [time: 1.64s, train loss: 13.0762]
+Thu 09 Apr 2026 12:33:52 INFO  epoch 3 training [time: 1.55s, train loss: 11.8976]
+Thu 09 Apr 2026 12:33:53 INFO  epoch 3 evaluating [time: 0.17s, valid_score: 0.238000]
+Thu 09 Apr 2026 12:33:53 INFO  valid result: 
+recall@10 : 0.1204    mrr@10 : 0.238    ndcg@10 : 0.1251    hit@10 : 0.561    precision@10 : 0.0879
+Thu 09 Apr 2026 12:33:54 INFO  epoch 4 training [time: 1.62s, train loss: 10.4754]
+Thu 09 Apr 2026 12:33:56 INFO  epoch 5 training [time: 1.56s, train loss: 9.1809]
+Thu 09 Apr 2026 12:33:56 INFO  epoch 5 evaluating [time: 0.19s, valid_score: 0.229500]
+Thu 09 Apr 2026 12:33:56 INFO  valid result: 
+recall@10 : 0.1193    mrr@10 : 0.2295    ndcg@10 : 0.1226    hit@10 : 0.5557    precision@10 : 0.0869
+Thu 09 Apr 2026 12:33:57 INFO  epoch 6 training [time: 1.59s, train loss: 8.2215]
+Thu 09 Apr 2026 12:33:59 INFO  epoch 7 training [time: 1.58s, train loss: 7.7121]
+Thu 09 Apr 2026 12:33:59 INFO  epoch 7 evaluating [time: 0.17s, valid_score: 0.230600]
+Thu 09 Apr 2026 12:33:59 INFO  valid result: 
+recall@10 : 0.1197    mrr@10 : 0.2306    ndcg@10 : 0.1237    hit@10 : 0.5567    precision@10 : 0.0873
+Thu 09 Apr 2026 12:34:01 INFO  epoch 8 training [time: 1.61s, train loss: 7.3326]
+Thu 09 Apr 2026 12:34:03 INFO  epoch 9 training [time: 1.84s, train loss: 7.1224]
+Thu 09 Apr 2026 12:34:03 INFO  epoch 9 evaluating [time: 0.18s, valid_score: 0.238000]
+Thu 09 Apr 2026 12:34:03 INFO  valid result: 
+recall@10 : 0.1203    mrr@10 : 0.238    ndcg@10 : 0.1256    hit@10 : 0.5589    precision@10 : 0.0879
+Thu 09 Apr 2026 12:34:05 INFO  epoch 10 training [time: 1.82s, train loss: 6.9861]
+Thu 09 Apr 2026 12:34:07 INFO  epoch 11 training [time: 2.11s, train loss: 6.9193]
+Thu 09 Apr 2026 12:34:07 INFO  epoch 11 evaluating [time: 0.21s, valid_score: 0.245100]
+Thu 09 Apr 2026 12:34:07 INFO  valid result: 
+recall@10 : 0.1205    mrr@10 : 0.2451    ndcg@10 : 0.1275    hit@10 : 0.562    precision@10 : 0.0888
+Thu 09 Apr 2026 12:34:07 INFO  Finished training, best eval result in epoch 1
+Thu 09 Apr 2026 12:34:07 INFO  Loading model structure and parameters from saved\LightGCN-Apr-09-2026_12-33-44.pth
+Thu 09 Apr 2026 12:34:08 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    18.60 %     |
++-------------+----------------+
+| GPU         |   0.0 / 0.0    |
++-------------+----------------+
+| Memory      | 0.40 G/15.84 G |
++-------------+----------------+
+Thu 09 Apr 2026 12:34:08 INFO  best valid : OrderedDict([('recall@10', 0.1271), ('mrr@10', 0.2563), ('ndcg@10', 0.1341), ('hit@10', 0.579), ('precision@10', 0.0911)])
+Thu 09 Apr 2026 12:34:08 INFO  test result: OrderedDict([('recall@10', 0.136), ('mrr@10', 0.2803), ('ndcg@10', 0.1511), ('hit@10', 0.596), ('precision@10', 0.1041)])
+Thu 09 Apr 2026 12:34:08 WARNING  command line args [--fast] will not be used in RecBole
+Thu 09 Apr 2026 12:34:08 INFO  ['experiment/models/LightGCN/run_lightgcn_experiments.py', '--fast']
+Thu 09 Apr 2026 12:34:08 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2021
+state = INFO
+reproducibility = True
+data_path = D:\Miniconda\envs\recbole\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = False
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 40
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 2
+stopping_step = 4
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 8192
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+n_layers = 2
+reg_weight = 1e-05
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.GENERAL
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 09 Apr 2026 12:34:09 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Thu 09 Apr 2026 12:34:09 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Thu 09 Apr 2026 12:34:09 INFO  [Evaluation]: eval_batch_size = [8192] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 09 Apr 2026 12:34:09 INFO  LightGCN(
+  (user_embedding): Embedding(944, 64)
+  (item_embedding): Embedding(1683, 64)
+  (mf_loss): BPRLoss()
+  (reg_loss): EmbLoss()
+)
+Trainable parameters: 168128
+Thu 09 Apr 2026 12:34:09 INFO  FLOPs: 0.0
+Thu 09 Apr 2026 12:34:11 INFO  epoch 0 training [time: 1.91s, train loss: 13.8469]
+Thu 09 Apr 2026 12:34:13 INFO  epoch 1 training [time: 2.22s, train loss: 13.6801]
+Thu 09 Apr 2026 12:34:14 INFO  epoch 1 evaluating [time: 0.22s, valid_score: 0.266400]
+Thu 09 Apr 2026 12:34:14 INFO  valid result: 
+recall@10 : 0.1291    mrr@10 : 0.2664    ndcg@10 : 0.14    hit@10 : 0.5652    precision@10 : 0.0971
+Thu 09 Apr 2026 12:34:14 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-34-09.pth
+Thu 09 Apr 2026 12:34:16 INFO  epoch 2 training [time: 2.13s, train loss: 13.0665]
+Thu 09 Apr 2026 12:34:18 INFO  epoch 3 training [time: 1.99s, train loss: 11.8959]
+Thu 09 Apr 2026 12:34:18 INFO  epoch 3 evaluating [time: 0.19s, valid_score: 0.251900]
+Thu 09 Apr 2026 12:34:18 INFO  valid result: 
+recall@10 : 0.1204    mrr@10 : 0.2519    ndcg@10 : 0.1325    hit@10 : 0.5546    precision@10 : 0.0927
+Thu 09 Apr 2026 12:34:20 INFO  epoch 4 training [time: 1.78s, train loss: 10.4619]
+Thu 09 Apr 2026 12:34:21 INFO  epoch 5 training [time: 1.83s, train loss: 9.1956]
+Thu 09 Apr 2026 12:34:22 INFO  epoch 5 evaluating [time: 0.19s, valid_score: 0.237400]
+Thu 09 Apr 2026 12:34:22 INFO  valid result: 
+recall@10 : 0.1194    mrr@10 : 0.2374    ndcg@10 : 0.1277    hit@10 : 0.5461    precision@10 : 0.09
+Thu 09 Apr 2026 12:34:24 INFO  epoch 6 training [time: 1.93s, train loss: 8.2918]
+Thu 09 Apr 2026 12:34:25 INFO  epoch 7 training [time: 1.81s, train loss: 7.6922]
+Thu 09 Apr 2026 12:34:26 INFO  epoch 7 evaluating [time: 0.22s, valid_score: 0.238500]
+Thu 09 Apr 2026 12:34:26 INFO  valid result: 
+recall@10 : 0.1191    mrr@10 : 0.2385    ndcg@10 : 0.1279    hit@10 : 0.5461    precision@10 : 0.0897
+Thu 09 Apr 2026 12:34:28 INFO  epoch 8 training [time: 1.92s, train loss: 7.4367]
+Thu 09 Apr 2026 12:34:29 INFO  epoch 9 training [time: 1.88s, train loss: 7.2200]
+Thu 09 Apr 2026 12:34:30 INFO  epoch 9 evaluating [time: 0.19s, valid_score: 0.238600]
+Thu 09 Apr 2026 12:34:30 INFO  valid result: 
+recall@10 : 0.1199    mrr@10 : 0.2386    ndcg@10 : 0.1287    hit@10 : 0.5504    precision@10 : 0.0912
+Thu 09 Apr 2026 12:34:31 INFO  epoch 10 training [time: 1.84s, train loss: 7.1238]
+Thu 09 Apr 2026 12:34:33 INFO  epoch 11 training [time: 1.97s, train loss: 7.0250]
+Thu 09 Apr 2026 12:34:34 INFO  epoch 11 evaluating [time: 0.22s, valid_score: 0.250200]
+Thu 09 Apr 2026 12:34:34 INFO  valid result: 
+recall@10 : 0.1212    mrr@10 : 0.2502    ndcg@10 : 0.1334    hit@10 : 0.5525    precision@10 : 0.0938
+Thu 09 Apr 2026 12:34:34 INFO  Finished training, best eval result in epoch 1
+Thu 09 Apr 2026 12:34:34 INFO  Loading model structure and parameters from saved\LightGCN-Apr-09-2026_12-34-09.pth
+Thu 09 Apr 2026 12:34:35 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    17.00 %     |
++-------------+----------------+
+| GPU         |   0.0 / 0.0    |
++-------------+----------------+
+| Memory      | 0.40 G/15.84 G |
++-------------+----------------+
+Thu 09 Apr 2026 12:34:35 INFO  best valid : OrderedDict([('recall@10', 0.1291), ('mrr@10', 0.2664), ('ndcg@10', 0.14), ('hit@10', 0.5652), ('precision@10', 0.0971)])
+Thu 09 Apr 2026 12:34:35 INFO  test result: OrderedDict([('recall@10', 0.1243), ('mrr@10', 0.2761), ('ndcg@10', 0.1435), ('hit@10', 0.5546), ('precision@10', 0.103)])
+Thu 09 Apr 2026 12:34:35 WARNING  command line args [--fast] will not be used in RecBole
+Thu 09 Apr 2026 12:34:35 INFO  ['experiment/models/LightGCN/run_lightgcn_experiments.py', '--fast']
+Thu 09 Apr 2026 12:34:35 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2022
+state = INFO
+reproducibility = True
+data_path = D:\Miniconda\envs\recbole\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = False
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 40
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 2
+stopping_step = 4
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 8192
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+n_layers = 2
+reg_weight = 1e-05
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.GENERAL
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 09 Apr 2026 12:34:35 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Thu 09 Apr 2026 12:34:35 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Thu 09 Apr 2026 12:34:35 INFO  [Evaluation]: eval_batch_size = [8192] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 09 Apr 2026 12:34:36 INFO  LightGCN(
+  (user_embedding): Embedding(944, 64)
+  (item_embedding): Embedding(1683, 64)
+  (mf_loss): BPRLoss()
+  (reg_loss): EmbLoss()
+)
+Trainable parameters: 168128
+Thu 09 Apr 2026 12:34:36 INFO  FLOPs: 0.0
+Thu 09 Apr 2026 12:34:38 INFO  epoch 0 training [time: 1.89s, train loss: 13.8474]
+Thu 09 Apr 2026 12:34:40 INFO  epoch 1 training [time: 1.95s, train loss: 13.6821]
+Thu 09 Apr 2026 12:34:40 INFO  epoch 1 evaluating [time: 0.19s, valid_score: 0.254200]
+Thu 09 Apr 2026 12:34:40 INFO  valid result: 
+recall@10 : 0.1135    mrr@10 : 0.2542    ndcg@10 : 0.1275    hit@10 : 0.5514    precision@10 : 0.0895
+Thu 09 Apr 2026 12:34:40 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-34-36.pth
+Thu 09 Apr 2026 12:34:42 INFO  epoch 2 training [time: 1.86s, train loss: 13.0803]
+Thu 09 Apr 2026 12:34:43 INFO  epoch 3 training [time: 1.90s, train loss: 11.9268]
+Thu 09 Apr 2026 12:34:44 INFO  epoch 3 evaluating [time: 0.18s, valid_score: 0.236400]
+Thu 09 Apr 2026 12:34:44 INFO  valid result: 
+recall@10 : 0.1109    mrr@10 : 0.2364    ndcg@10 : 0.1217    hit@10 : 0.5419    precision@10 : 0.0865
+Thu 09 Apr 2026 12:34:46 INFO  epoch 4 training [time: 1.83s, train loss: 10.5101]
+Thu 09 Apr 2026 12:34:47 INFO  epoch 5 training [time: 1.85s, train loss: 9.1913]
+Thu 09 Apr 2026 12:34:48 INFO  epoch 5 evaluating [time: 0.18s, valid_score: 0.229100]
+Thu 09 Apr 2026 12:34:48 INFO  valid result: 
+recall@10 : 0.11    mrr@10 : 0.2291    ndcg@10 : 0.1182    hit@10 : 0.5366    precision@10 : 0.0835
+Thu 09 Apr 2026 12:34:49 INFO  epoch 6 training [time: 1.88s, train loss: 8.3079]
+Thu 09 Apr 2026 12:34:51 INFO  epoch 7 training [time: 1.86s, train loss: 7.6970]
+Thu 09 Apr 2026 12:34:51 INFO  epoch 7 evaluating [time: 0.18s, valid_score: 0.230600]
+Thu 09 Apr 2026 12:34:51 INFO  valid result: 
+recall@10 : 0.111    mrr@10 : 0.2306    ndcg@10 : 0.1193    hit@10 : 0.5419    precision@10 : 0.0848
+Thu 09 Apr 2026 12:34:53 INFO  epoch 8 training [time: 1.91s, train loss: 7.3484]
+Thu 09 Apr 2026 12:34:55 INFO  epoch 9 training [time: 1.89s, train loss: 7.1440]
+Thu 09 Apr 2026 12:34:55 INFO  epoch 9 evaluating [time: 0.18s, valid_score: 0.234800]
+Thu 09 Apr 2026 12:34:55 INFO  valid result: 
+recall@10 : 0.1127    mrr@10 : 0.2348    ndcg@10 : 0.1213    hit@10 : 0.5461    precision@10 : 0.0856
+Thu 09 Apr 2026 12:34:57 INFO  epoch 10 training [time: 1.89s, train loss: 7.0308]
+Thu 09 Apr 2026 12:34:59 INFO  epoch 11 training [time: 1.94s, train loss: 6.9411]
+Thu 09 Apr 2026 12:34:59 INFO  epoch 11 evaluating [time: 0.18s, valid_score: 0.239900]
+Thu 09 Apr 2026 12:34:59 INFO  valid result: 
+recall@10 : 0.115    mrr@10 : 0.2399    ndcg@10 : 0.1244    hit@10 : 0.5504    precision@10 : 0.0887
+Thu 09 Apr 2026 12:34:59 INFO  Finished training, best eval result in epoch 1
+Thu 09 Apr 2026 12:34:59 INFO  Loading model structure and parameters from saved\LightGCN-Apr-09-2026_12-34-36.pth
+Thu 09 Apr 2026 12:35:01 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    14.10 %     |
++-------------+----------------+
+| GPU         |   0.0 / 0.0    |
++-------------+----------------+
+| Memory      | 0.40 G/15.84 G |
++-------------+----------------+
+Thu 09 Apr 2026 12:35:01 INFO  best valid : OrderedDict([('recall@10', 0.1135), ('mrr@10', 0.2542), ('ndcg@10', 0.1275), ('hit@10', 0.5514), ('precision@10', 0.0895)])
+Thu 09 Apr 2026 12:35:01 INFO  test result: OrderedDict([('recall@10', 0.1365), ('mrr@10', 0.3078), ('ndcg@10', 0.1617), ('hit@10', 0.6066), ('precision@10', 0.1122)])
+Thu 09 Apr 2026 12:35:01 WARNING  command line args [--fast] will not be used in RecBole
+Thu 09 Apr 2026 12:35:01 INFO  ['experiment/models/LightGCN/run_lightgcn_experiments.py', '--fast']
+Thu 09 Apr 2026 12:35:01 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = D:\Miniconda\envs\recbole\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = False
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 40
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 2
+stopping_step = 4
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 8192
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 32
+n_layers = 1
+reg_weight = 0.0001
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.GENERAL
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 09 Apr 2026 12:35:01 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Thu 09 Apr 2026 12:35:01 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Thu 09 Apr 2026 12:35:01 INFO  [Evaluation]: eval_batch_size = [8192] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 09 Apr 2026 12:35:01 INFO  LightGCN(
+  (user_embedding): Embedding(944, 32)
+  (item_embedding): Embedding(1683, 32)
+  (mf_loss): BPRLoss()
+  (reg_loss): EmbLoss()
+)
+Trainable parameters: 84064
+Thu 09 Apr 2026 12:35:01 INFO  FLOPs: 0.0
+Thu 09 Apr 2026 12:35:02 INFO  epoch 0 training [time: 0.77s, train loss: 13.8580]
+Thu 09 Apr 2026 12:35:03 INFO  epoch 1 training [time: 0.78s, train loss: 13.8302]
+Thu 09 Apr 2026 12:35:03 INFO  epoch 1 evaluating [time: 0.16s, valid_score: 0.188500]
+Thu 09 Apr 2026 12:35:03 INFO  valid result: 
+recall@10 : 0.0796    mrr@10 : 0.1885    ndcg@10 : 0.0943    hit@10 : 0.4443    precision@10 : 0.0724
+Thu 09 Apr 2026 12:35:03 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:04 INFO  epoch 2 training [time: 0.89s, train loss: 13.6944]
+Thu 09 Apr 2026 12:35:05 INFO  epoch 3 training [time: 0.79s, train loss: 13.3046]
+Thu 09 Apr 2026 12:35:05 INFO  epoch 3 evaluating [time: 0.16s, valid_score: 0.271300]
+Thu 09 Apr 2026 12:35:05 INFO  valid result: 
+recall@10 : 0.1384    mrr@10 : 0.2713    ndcg@10 : 0.1447    hit@10 : 0.5917    precision@10 : 0.0976
+Thu 09 Apr 2026 12:35:05 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:06 INFO  epoch 4 training [time: 0.78s, train loss: 12.5913]
+Thu 09 Apr 2026 12:35:07 INFO  epoch 5 training [time: 0.77s, train loss: 11.6095]
+Thu 09 Apr 2026 12:35:07 INFO  epoch 5 evaluating [time: 0.16s, valid_score: 0.273100]
+Thu 09 Apr 2026 12:35:07 INFO  valid result: 
+recall@10 : 0.1371    mrr@10 : 0.2731    ndcg@10 : 0.1444    hit@10 : 0.5832    precision@10 : 0.0954
+Thu 09 Apr 2026 12:35:07 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:08 INFO  epoch 6 training [time: 0.87s, train loss: 10.5169]
+Thu 09 Apr 2026 12:35:09 INFO  epoch 7 training [time: 0.86s, train loss: 9.5553]
+Thu 09 Apr 2026 12:35:09 INFO  epoch 7 evaluating [time: 0.20s, valid_score: 0.268500]
+Thu 09 Apr 2026 12:35:09 INFO  valid result: 
+recall@10 : 0.1376    mrr@10 : 0.2685    ndcg@10 : 0.1436    hit@10 : 0.579    precision@10 : 0.0958
+Thu 09 Apr 2026 12:35:10 INFO  epoch 8 training [time: 0.81s, train loss: 8.7316]
+Thu 09 Apr 2026 12:35:10 INFO  epoch 9 training [time: 0.77s, train loss: 8.1086]
+Thu 09 Apr 2026 12:35:10 INFO  epoch 9 evaluating [time: 0.16s, valid_score: 0.270800]
+Thu 09 Apr 2026 12:35:10 INFO  valid result: 
+recall@10 : 0.1425    mrr@10 : 0.2708    ndcg@10 : 0.1461    hit@10 : 0.5885    precision@10 : 0.0975
+Thu 09 Apr 2026 12:35:11 INFO  epoch 10 training [time: 0.89s, train loss: 7.6635]
+Thu 09 Apr 2026 12:35:12 INFO  epoch 11 training [time: 0.88s, train loss: 7.3389]
+Thu 09 Apr 2026 12:35:12 INFO  epoch 11 evaluating [time: 0.17s, valid_score: 0.273400]
+Thu 09 Apr 2026 12:35:12 INFO  valid result: 
+recall@10 : 0.145    mrr@10 : 0.2734    ndcg@10 : 0.1487    hit@10 : 0.5907    precision@10 : 0.0992
+Thu 09 Apr 2026 12:35:12 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:13 INFO  epoch 12 training [time: 0.82s, train loss: 7.0639]
+Thu 09 Apr 2026 12:35:14 INFO  epoch 13 training [time: 1.04s, train loss: 6.9158]
+Thu 09 Apr 2026 12:35:14 INFO  epoch 13 evaluating [time: 0.20s, valid_score: 0.276600]
+Thu 09 Apr 2026 12:35:14 INFO  valid result: 
+recall@10 : 0.1482    mrr@10 : 0.2766    ndcg@10 : 0.1514    hit@10 : 0.5992    precision@10 : 0.1015
+Thu 09 Apr 2026 12:35:14 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:15 INFO  epoch 14 training [time: 0.98s, train loss: 6.7545]
+Thu 09 Apr 2026 12:35:16 INFO  epoch 15 training [time: 0.88s, train loss: 6.5910]
+Thu 09 Apr 2026 12:35:17 INFO  epoch 15 evaluating [time: 0.19s, valid_score: 0.286400]
+Thu 09 Apr 2026 12:35:17 INFO  valid result: 
+recall@10 : 0.1514    mrr@10 : 0.2864    ndcg@10 : 0.1562    hit@10 : 0.6066    precision@10 : 0.1039
+Thu 09 Apr 2026 12:35:17 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:17 INFO  epoch 16 training [time: 0.94s, train loss: 6.5320]
+Thu 09 Apr 2026 12:35:18 INFO  epoch 17 training [time: 0.97s, train loss: 6.3671]
+Thu 09 Apr 2026 12:35:19 INFO  epoch 17 evaluating [time: 0.20s, valid_score: 0.296800]
+Thu 09 Apr 2026 12:35:19 INFO  valid result: 
+recall@10 : 0.1518    mrr@10 : 0.2968    ndcg@10 : 0.1604    hit@10 : 0.6129    precision@10 : 0.1065
+Thu 09 Apr 2026 12:35:19 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:20 INFO  epoch 18 training [time: 1.00s, train loss: 6.3377]
+Thu 09 Apr 2026 12:35:21 INFO  epoch 19 training [time: 0.91s, train loss: 6.3065]
+Thu 09 Apr 2026 12:35:21 INFO  epoch 19 evaluating [time: 0.18s, valid_score: 0.299600]
+Thu 09 Apr 2026 12:35:21 INFO  valid result: 
+recall@10 : 0.1534    mrr@10 : 0.2996    ndcg@10 : 0.1632    hit@10 : 0.6129    precision@10 : 0.1087
+Thu 09 Apr 2026 12:35:21 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:22 INFO  epoch 20 training [time: 0.94s, train loss: 6.1833]
+Thu 09 Apr 2026 12:35:23 INFO  epoch 21 training [time: 0.86s, train loss: 6.1679]
+Thu 09 Apr 2026 12:35:23 INFO  epoch 21 evaluating [time: 0.17s, valid_score: 0.302700]
+Thu 09 Apr 2026 12:35:23 INFO  valid result: 
+recall@10 : 0.157    mrr@10 : 0.3027    ndcg@10 : 0.1675    hit@10 : 0.6204    precision@10 : 0.1122
+Thu 09 Apr 2026 12:35:23 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:24 INFO  epoch 22 training [time: 0.81s, train loss: 6.0817]
+Thu 09 Apr 2026 12:35:24 INFO  epoch 23 training [time: 0.77s, train loss: 6.0026]
+Thu 09 Apr 2026 12:35:24 INFO  epoch 23 evaluating [time: 0.16s, valid_score: 0.305700]
+Thu 09 Apr 2026 12:35:24 INFO  valid result: 
+recall@10 : 0.1589    mrr@10 : 0.3057    ndcg@10 : 0.1705    hit@10 : 0.6257    precision@10 : 0.115
+Thu 09 Apr 2026 12:35:24 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:25 INFO  epoch 24 training [time: 0.78s, train loss: 5.9455]
+Thu 09 Apr 2026 12:35:26 INFO  epoch 25 training [time: 0.82s, train loss: 5.9395]
+Thu 09 Apr 2026 12:35:26 INFO  epoch 25 evaluating [time: 0.16s, valid_score: 0.307500]
+Thu 09 Apr 2026 12:35:26 INFO  valid result: 
+recall@10 : 0.1624    mrr@10 : 0.3075    ndcg@10 : 0.1739    hit@10 : 0.632    precision@10 : 0.1192
+Thu 09 Apr 2026 12:35:26 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:27 INFO  epoch 26 training [time: 0.80s, train loss: 5.8525]
+Thu 09 Apr 2026 12:35:28 INFO  epoch 27 training [time: 0.81s, train loss: 5.8301]
+Thu 09 Apr 2026 12:35:28 INFO  epoch 27 evaluating [time: 0.16s, valid_score: 0.311300]
+Thu 09 Apr 2026 12:35:28 INFO  valid result: 
+recall@10 : 0.1642    mrr@10 : 0.3113    ndcg@10 : 0.1766    hit@10 : 0.6341    precision@10 : 0.1209
+Thu 09 Apr 2026 12:35:28 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:29 INFO  epoch 28 training [time: 0.78s, train loss: 5.7785]
+Thu 09 Apr 2026 12:35:30 INFO  epoch 29 training [time: 0.79s, train loss: 5.6905]
+Thu 09 Apr 2026 12:35:30 INFO  epoch 29 evaluating [time: 0.16s, valid_score: 0.312100]
+Thu 09 Apr 2026 12:35:30 INFO  valid result: 
+recall@10 : 0.1672    mrr@10 : 0.3121    ndcg@10 : 0.1783    hit@10 : 0.6394    precision@10 : 0.1216
+Thu 09 Apr 2026 12:35:30 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:31 INFO  epoch 30 training [time: 0.77s, train loss: 5.6649]
+Thu 09 Apr 2026 12:35:31 INFO  epoch 31 training [time: 0.81s, train loss: 5.6771]
+Thu 09 Apr 2026 12:35:31 INFO  epoch 31 evaluating [time: 0.16s, valid_score: 0.312000]
+Thu 09 Apr 2026 12:35:31 INFO  valid result: 
+recall@10 : 0.1654    mrr@10 : 0.312    ndcg@10 : 0.178    hit@10 : 0.6405    precision@10 : 0.1223
+Thu 09 Apr 2026 12:35:32 INFO  epoch 32 training [time: 0.75s, train loss: 5.6220]
+Thu 09 Apr 2026 12:35:33 INFO  epoch 33 training [time: 0.76s, train loss: 5.5585]
+Thu 09 Apr 2026 12:35:33 INFO  epoch 33 evaluating [time: 0.17s, valid_score: 0.313100]
+Thu 09 Apr 2026 12:35:33 INFO  valid result: 
+recall@10 : 0.1663    mrr@10 : 0.3131    ndcg@10 : 0.1785    hit@10 : 0.6458    precision@10 : 0.1225
+Thu 09 Apr 2026 12:35:33 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:34 INFO  epoch 34 training [time: 0.78s, train loss: 5.5835]
+Thu 09 Apr 2026 12:35:35 INFO  epoch 35 training [time: 0.79s, train loss: 5.5536]
+Thu 09 Apr 2026 12:35:35 INFO  epoch 35 evaluating [time: 0.16s, valid_score: 0.316000]
+Thu 09 Apr 2026 12:35:35 INFO  valid result: 
+recall@10 : 0.1671    mrr@10 : 0.316    ndcg@10 : 0.1803    hit@10 : 0.649    precision@10 : 0.1244
+Thu 09 Apr 2026 12:35:35 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:36 INFO  epoch 36 training [time: 0.79s, train loss: 5.4803]
+Thu 09 Apr 2026 12:35:36 INFO  epoch 37 training [time: 0.79s, train loss: 5.4781]
+Thu 09 Apr 2026 12:35:37 INFO  epoch 37 evaluating [time: 0.15s, valid_score: 0.318100]
+Thu 09 Apr 2026 12:35:37 INFO  valid result: 
+recall@10 : 0.1666    mrr@10 : 0.3181    ndcg@10 : 0.1809    hit@10 : 0.6511    precision@10 : 0.1247
+Thu 09 Apr 2026 12:35:37 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:37 INFO  epoch 38 training [time: 0.80s, train loss: 5.4278]
+Thu 09 Apr 2026 12:35:38 INFO  epoch 39 training [time: 0.78s, train loss: 5.4217]
+Thu 09 Apr 2026 12:35:38 INFO  epoch 39 evaluating [time: 0.16s, valid_score: 0.315100]
+Thu 09 Apr 2026 12:35:38 INFO  valid result: 
+recall@10 : 0.1656    mrr@10 : 0.3151    ndcg@10 : 0.1798    hit@10 : 0.649    precision@10 : 0.1243
+Thu 09 Apr 2026 12:35:38 INFO  Loading model structure and parameters from saved\LightGCN-Apr-09-2026_12-35-01.pth
+Thu 09 Apr 2026 12:35:40 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    11.80 %     |
++-------------+----------------+
+| GPU         |   0.0 / 0.0    |
++-------------+----------------+
+| Memory      | 0.40 G/15.84 G |
++-------------+----------------+
+Thu 09 Apr 2026 12:35:40 INFO  best valid : OrderedDict([('recall@10', 0.1666), ('mrr@10', 0.3181), ('ndcg@10', 0.1809), ('hit@10', 0.6511), ('precision@10', 0.1247)])
+Thu 09 Apr 2026 12:35:40 INFO  test result: OrderedDict([('recall@10', 0.1867), ('mrr@10', 0.3834), ('ndcg@10', 0.2175), ('hit@10', 0.6819), ('precision@10', 0.1456)])
+Thu 09 Apr 2026 12:35:40 WARNING  command line args [--fast] will not be used in RecBole
+Thu 09 Apr 2026 12:35:40 INFO  ['experiment/models/LightGCN/run_lightgcn_experiments.py', '--fast']
+Thu 09 Apr 2026 12:35:40 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = D:\Miniconda\envs\recbole\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = False
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 40
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 2
+stopping_step = 4
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 8192
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 32
+n_layers = 2
+reg_weight = 0.0001
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.GENERAL
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 09 Apr 2026 12:35:40 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Thu 09 Apr 2026 12:35:40 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Thu 09 Apr 2026 12:35:40 INFO  [Evaluation]: eval_batch_size = [8192] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 09 Apr 2026 12:35:40 INFO  LightGCN(
+  (user_embedding): Embedding(944, 32)
+  (item_embedding): Embedding(1683, 32)
+  (mf_loss): BPRLoss()
+  (reg_loss): EmbLoss()
+)
+Trainable parameters: 84064
+Thu 09 Apr 2026 12:35:40 INFO  FLOPs: 0.0
+Thu 09 Apr 2026 12:35:42 INFO  epoch 0 training [time: 1.30s, train loss: 13.8553]
+Thu 09 Apr 2026 12:35:43 INFO  epoch 1 training [time: 1.29s, train loss: 13.7740]
+Thu 09 Apr 2026 12:35:43 INFO  epoch 1 evaluating [time: 0.17s, valid_score: 0.249600]
+Thu 09 Apr 2026 12:35:43 INFO  valid result: 
+recall@10 : 0.1233    mrr@10 : 0.2496    ndcg@10 : 0.1297    hit@10 : 0.5705    precision@10 : 0.0914
+Thu 09 Apr 2026 12:35:43 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:35:45 INFO  epoch 2 training [time: 1.31s, train loss: 13.4750]
+Thu 09 Apr 2026 12:35:46 INFO  epoch 3 training [time: 1.38s, train loss: 12.8568]
+Thu 09 Apr 2026 12:35:46 INFO  epoch 3 evaluating [time: 0.17s, valid_score: 0.262000]
+Thu 09 Apr 2026 12:35:46 INFO  valid result: 
+recall@10 : 0.1241    mrr@10 : 0.262    ndcg@10 : 0.135    hit@10 : 0.5684    precision@10 : 0.0902
+Thu 09 Apr 2026 12:35:46 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:35:47 INFO  epoch 4 training [time: 1.35s, train loss: 11.9699]
+Thu 09 Apr 2026 12:35:49 INFO  epoch 5 training [time: 1.29s, train loss: 10.9337]
+Thu 09 Apr 2026 12:35:49 INFO  epoch 5 evaluating [time: 0.17s, valid_score: 0.258700]
+Thu 09 Apr 2026 12:35:49 INFO  valid result: 
+recall@10 : 0.1259    mrr@10 : 0.2587    ndcg@10 : 0.1348    hit@10 : 0.5684    precision@10 : 0.0906
+Thu 09 Apr 2026 12:35:50 INFO  epoch 6 training [time: 1.44s, train loss: 9.9004]
+Thu 09 Apr 2026 12:35:52 INFO  epoch 7 training [time: 1.31s, train loss: 9.0920]
+Thu 09 Apr 2026 12:35:52 INFO  epoch 7 evaluating [time: 0.18s, valid_score: 0.259500]
+Thu 09 Apr 2026 12:35:52 INFO  valid result: 
+recall@10 : 0.1272    mrr@10 : 0.2595    ndcg@10 : 0.1357    hit@10 : 0.5716    precision@10 : 0.091
+Thu 09 Apr 2026 12:35:53 INFO  epoch 8 training [time: 1.26s, train loss: 8.4115]
+Thu 09 Apr 2026 12:35:54 INFO  epoch 9 training [time: 1.36s, train loss: 7.9190]
+Thu 09 Apr 2026 12:35:55 INFO  epoch 9 evaluating [time: 0.18s, valid_score: 0.260700]
+Thu 09 Apr 2026 12:35:55 INFO  valid result: 
+recall@10 : 0.1293    mrr@10 : 0.2607    ndcg@10 : 0.137    hit@10 : 0.5748    precision@10 : 0.0916
+Thu 09 Apr 2026 12:35:56 INFO  epoch 10 training [time: 1.40s, train loss: 7.5703]
+Thu 09 Apr 2026 12:35:57 INFO  epoch 11 training [time: 1.35s, train loss: 7.3365]
+Thu 09 Apr 2026 12:35:58 INFO  epoch 11 evaluating [time: 0.18s, valid_score: 0.265000]
+Thu 09 Apr 2026 12:35:58 INFO  valid result: 
+recall@10 : 0.1319    mrr@10 : 0.265    ndcg@10 : 0.1402    hit@10 : 0.5779    precision@10 : 0.0933
+Thu 09 Apr 2026 12:35:58 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:35:59 INFO  epoch 12 training [time: 1.47s, train loss: 7.1267]
+Thu 09 Apr 2026 12:36:01 INFO  epoch 13 training [time: 1.59s, train loss: 7.0238]
+Thu 09 Apr 2026 12:36:01 INFO  epoch 13 evaluating [time: 0.20s, valid_score: 0.267900]
+Thu 09 Apr 2026 12:36:01 INFO  valid result: 
+recall@10 : 0.1347    mrr@10 : 0.2679    ndcg@10 : 0.143    hit@10 : 0.5822    precision@10 : 0.0955
+Thu 09 Apr 2026 12:36:01 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:02 INFO  epoch 14 training [time: 1.40s, train loss: 6.9219]
+Thu 09 Apr 2026 12:36:04 INFO  epoch 15 training [time: 1.39s, train loss: 6.8022]
+Thu 09 Apr 2026 12:36:04 INFO  epoch 15 evaluating [time: 0.18s, valid_score: 0.269500]
+Thu 09 Apr 2026 12:36:04 INFO  valid result: 
+recall@10 : 0.1371    mrr@10 : 0.2695    ndcg@10 : 0.1448    hit@10 : 0.5896    precision@10 : 0.0966
+Thu 09 Apr 2026 12:36:04 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:05 INFO  epoch 16 training [time: 1.38s, train loss: 6.7783]
+Thu 09 Apr 2026 12:36:07 INFO  epoch 17 training [time: 1.45s, train loss: 6.6393]
+Thu 09 Apr 2026 12:36:07 INFO  epoch 17 evaluating [time: 0.18s, valid_score: 0.275300]
+Thu 09 Apr 2026 12:36:07 INFO  valid result: 
+recall@10 : 0.1421    mrr@10 : 0.2753    ndcg@10 : 0.1489    hit@10 : 0.6023    precision@10 : 0.0994
+Thu 09 Apr 2026 12:36:07 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:08 INFO  epoch 18 training [time: 1.46s, train loss: 6.6502]
+Thu 09 Apr 2026 12:36:10 INFO  epoch 19 training [time: 1.37s, train loss: 6.6480]
+Thu 09 Apr 2026 12:36:10 INFO  epoch 19 evaluating [time: 0.19s, valid_score: 0.280700]
+Thu 09 Apr 2026 12:36:10 INFO  valid result: 
+recall@10 : 0.1435    mrr@10 : 0.2807    ndcg@10 : 0.1513    hit@10 : 0.6034    precision@10 : 0.1011
+Thu 09 Apr 2026 12:36:10 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:11 INFO  epoch 20 training [time: 1.55s, train loss: 6.5431]
+Thu 09 Apr 2026 12:36:13 INFO  epoch 21 training [time: 1.37s, train loss: 6.5553]
+Thu 09 Apr 2026 12:36:13 INFO  epoch 21 evaluating [time: 0.17s, valid_score: 0.289400]
+Thu 09 Apr 2026 12:36:13 INFO  valid result: 
+recall@10 : 0.147    mrr@10 : 0.2894    ndcg@10 : 0.1558    hit@10 : 0.6129    precision@10 : 0.104
+Thu 09 Apr 2026 12:36:13 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:14 INFO  epoch 22 training [time: 1.42s, train loss: 6.4826]
+Thu 09 Apr 2026 12:36:16 INFO  epoch 23 training [time: 1.40s, train loss: 6.4172]
+Thu 09 Apr 2026 12:36:16 INFO  epoch 23 evaluating [time: 0.21s, valid_score: 0.294200]
+Thu 09 Apr 2026 12:36:16 INFO  valid result: 
+recall@10 : 0.1515    mrr@10 : 0.2942    ndcg@10 : 0.1601    hit@10 : 0.6151    precision@10 : 0.1069
+Thu 09 Apr 2026 12:36:16 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:18 INFO  epoch 24 training [time: 1.68s, train loss: 6.3781]
+Thu 09 Apr 2026 12:36:19 INFO  epoch 25 training [time: 1.57s, train loss: 6.3842]
+Thu 09 Apr 2026 12:36:20 INFO  epoch 25 evaluating [time: 0.20s, valid_score: 0.297100]
+Thu 09 Apr 2026 12:36:20 INFO  valid result: 
+recall@10 : 0.1544    mrr@10 : 0.2971    ndcg@10 : 0.163    hit@10 : 0.6214    precision@10 : 0.1094
+Thu 09 Apr 2026 12:36:20 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:21 INFO  epoch 26 training [time: 1.48s, train loss: 6.3069]
+Thu 09 Apr 2026 12:36:23 INFO  epoch 27 training [time: 1.63s, train loss: 6.2730]
+Thu 09 Apr 2026 12:36:23 INFO  epoch 27 evaluating [time: 0.21s, valid_score: 0.298600]
+Thu 09 Apr 2026 12:36:23 INFO  valid result: 
+recall@10 : 0.1571    mrr@10 : 0.2986    ndcg@10 : 0.1651    hit@10 : 0.6278    precision@10 : 0.1111
+Thu 09 Apr 2026 12:36:23 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:24 INFO  epoch 28 training [time: 1.59s, train loss: 6.2370]
+Thu 09 Apr 2026 12:36:26 INFO  epoch 29 training [time: 1.65s, train loss: 6.1628]
+Thu 09 Apr 2026 12:36:26 INFO  epoch 29 evaluating [time: 0.20s, valid_score: 0.304100]
+Thu 09 Apr 2026 12:36:26 INFO  valid result: 
+recall@10 : 0.1606    mrr@10 : 0.3041    ndcg@10 : 0.1693    hit@10 : 0.6394    precision@10 : 0.1142
+Thu 09 Apr 2026 12:36:26 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:28 INFO  epoch 30 training [time: 1.59s, train loss: 6.1374]
+Thu 09 Apr 2026 12:36:29 INFO  epoch 31 training [time: 1.48s, train loss: 6.1641]
+Thu 09 Apr 2026 12:36:30 INFO  epoch 31 evaluating [time: 0.18s, valid_score: 0.305400]
+Thu 09 Apr 2026 12:36:30 INFO  valid result: 
+recall@10 : 0.1593    mrr@10 : 0.3054    ndcg@10 : 0.1701    hit@10 : 0.6352    precision@10 : 0.1152
+Thu 09 Apr 2026 12:36:30 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:31 INFO  epoch 32 training [time: 1.44s, train loss: 6.0986]
+Thu 09 Apr 2026 12:36:32 INFO  epoch 33 training [time: 1.46s, train loss: 6.0372]
+Thu 09 Apr 2026 12:36:33 INFO  epoch 33 evaluating [time: 0.17s, valid_score: 0.308200]
+Thu 09 Apr 2026 12:36:33 INFO  valid result: 
+recall@10 : 0.1596    mrr@10 : 0.3082    ndcg@10 : 0.172    hit@10 : 0.632    precision@10 : 0.1162
+Thu 09 Apr 2026 12:36:33 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:34 INFO  epoch 34 training [time: 1.39s, train loss: 6.0555]
+Thu 09 Apr 2026 12:36:35 INFO  epoch 35 training [time: 1.45s, train loss: 6.0226]
+Thu 09 Apr 2026 12:36:36 INFO  epoch 35 evaluating [time: 0.19s, valid_score: 0.310300]
+Thu 09 Apr 2026 12:36:36 INFO  valid result: 
+recall@10 : 0.1636    mrr@10 : 0.3103    ndcg@10 : 0.175    hit@10 : 0.6341    precision@10 : 0.1192
+Thu 09 Apr 2026 12:36:36 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:37 INFO  epoch 36 training [time: 1.42s, train loss: 5.9475]
+Thu 09 Apr 2026 12:36:38 INFO  epoch 37 training [time: 1.38s, train loss: 5.9573]
+Thu 09 Apr 2026 12:36:39 INFO  epoch 37 evaluating [time: 0.17s, valid_score: 0.310800]
+Thu 09 Apr 2026 12:36:39 INFO  valid result: 
+recall@10 : 0.1653    mrr@10 : 0.3108    ndcg@10 : 0.1766    hit@10 : 0.6352    precision@10 : 0.1208
+Thu 09 Apr 2026 12:36:39 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:40 INFO  epoch 38 training [time: 1.42s, train loss: 5.9153]
+Thu 09 Apr 2026 12:36:42 INFO  epoch 39 training [time: 1.50s, train loss: 5.8938]
+Thu 09 Apr 2026 12:36:42 INFO  epoch 39 evaluating [time: 0.17s, valid_score: 0.312600]
+Thu 09 Apr 2026 12:36:42 INFO  valid result: 
+recall@10 : 0.1658    mrr@10 : 0.3126    ndcg@10 : 0.1779    hit@10 : 0.6363    precision@10 : 0.1215
+Thu 09 Apr 2026 12:36:42 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:42 INFO  Loading model structure and parameters from saved\LightGCN-Apr-09-2026_12-35-40.pth
+Thu 09 Apr 2026 12:36:43 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    18.90 %     |
++-------------+----------------+
+| GPU         |   0.0 / 0.0    |
++-------------+----------------+
+| Memory      | 0.40 G/15.84 G |
++-------------+----------------+
+Thu 09 Apr 2026 12:36:43 INFO  best valid : OrderedDict([('recall@10', 0.1658), ('mrr@10', 0.3126), ('ndcg@10', 0.1779), ('hit@10', 0.6363), ('precision@10', 0.1215)])
+Thu 09 Apr 2026 12:36:43 INFO  test result: OrderedDict([('recall@10', 0.1878), ('mrr@10', 0.3699), ('ndcg@10', 0.2119), ('hit@10', 0.684), ('precision@10', 0.1415)])
+Thu 09 Apr 2026 12:36:43 WARNING  command line args [--fast] will not be used in RecBole
+Thu 09 Apr 2026 12:36:43 INFO  ['experiment/models/LightGCN/run_lightgcn_experiments.py', '--fast']
+Thu 09 Apr 2026 12:36:43 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = D:\Miniconda\envs\recbole\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = False
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 40
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 2
+stopping_step = 4
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 8192
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+n_layers = 1
+reg_weight = 0.0001
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.GENERAL
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 09 Apr 2026 12:36:43 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Thu 09 Apr 2026 12:36:44 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Thu 09 Apr 2026 12:36:44 INFO  [Evaluation]: eval_batch_size = [8192] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 09 Apr 2026 12:36:44 INFO  LightGCN(
+  (user_embedding): Embedding(944, 64)
+  (item_embedding): Embedding(1683, 64)
+  (mf_loss): BPRLoss()
+  (reg_loss): EmbLoss()
+)
+Trainable parameters: 168128
+Thu 09 Apr 2026 12:36:44 INFO  FLOPs: 0.0
+Thu 09 Apr 2026 12:36:45 INFO  epoch 0 training [time: 1.14s, train loss: 13.8537]
+Thu 09 Apr 2026 12:36:46 INFO  epoch 1 training [time: 1.11s, train loss: 13.8008]
+Thu 09 Apr 2026 12:36:46 INFO  epoch 1 evaluating [time: 0.17s, valid_score: 0.235900]
+Thu 09 Apr 2026 12:36:46 INFO  valid result: 
+recall@10 : 0.113    mrr@10 : 0.2359    ndcg@10 : 0.1237    hit@10 : 0.5334    precision@10 : 0.088
+Thu 09 Apr 2026 12:36:46 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-36-44.pth
+Thu 09 Apr 2026 12:36:47 INFO  epoch 2 training [time: 1.24s, train loss: 13.5456]
+Thu 09 Apr 2026 12:36:49 INFO  epoch 3 training [time: 1.18s, train loss: 12.8119]
+Thu 09 Apr 2026 12:36:49 INFO  epoch 3 evaluating [time: 0.24s, valid_score: 0.283300]
+Thu 09 Apr 2026 12:36:49 INFO  valid result: 
+recall@10 : 0.1463    mrr@10 : 0.2833    ndcg@10 : 0.1533    hit@10 : 0.6098    precision@10 : 0.1031
+Thu 09 Apr 2026 12:36:49 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-36-44.pth
+Thu 09 Apr 2026 12:36:50 INFO  epoch 4 training [time: 1.43s, train loss: 11.5583]
+Thu 09 Apr 2026 12:36:52 INFO  epoch 5 training [time: 1.30s, train loss: 10.0832]
+Thu 09 Apr 2026 12:36:52 INFO  epoch 5 evaluating [time: 0.17s, valid_score: 0.271100]
+Thu 09 Apr 2026 12:36:52 INFO  valid result: 
+recall@10 : 0.1484    mrr@10 : 0.2711    ndcg@10 : 0.15    hit@10 : 0.6098    precision@10 : 0.1016
+Thu 09 Apr 2026 12:36:53 INFO  epoch 6 training [time: 1.34s, train loss: 8.7832]
+Thu 09 Apr 2026 12:36:54 INFO  epoch 7 training [time: 1.31s, train loss: 7.9289]
+Thu 09 Apr 2026 12:36:55 INFO  epoch 7 evaluating [time: 0.19s, valid_score: 0.271700]
+Thu 09 Apr 2026 12:36:55 INFO  valid result: 
+recall@10 : 0.1505    mrr@10 : 0.2717    ndcg@10 : 0.1507    hit@10 : 0.6129    precision@10 : 0.102
+Thu 09 Apr 2026 12:36:56 INFO  epoch 8 training [time: 1.16s, train loss: 7.3162]
+Thu 09 Apr 2026 12:36:57 INFO  epoch 9 training [time: 1.44s, train loss: 6.9324]
+Thu 09 Apr 2026 12:36:57 INFO  epoch 9 evaluating [time: 0.21s, valid_score: 0.279600]
+Thu 09 Apr 2026 12:36:57 INFO  valid result: 
+recall@10 : 0.1551    mrr@10 : 0.2796    ndcg@10 : 0.1561    hit@10 : 0.6193    precision@10 : 0.1046
+Thu 09 Apr 2026 12:36:59 INFO  epoch 10 training [time: 1.29s, train loss: 6.6719]
+Thu 09 Apr 2026 12:37:00 INFO  epoch 11 training [time: 1.20s, train loss: 6.4843]
+Thu 09 Apr 2026 12:37:00 INFO  epoch 11 evaluating [time: 0.19s, valid_score: 0.293200]
+Thu 09 Apr 2026 12:37:00 INFO  valid result: 
+recall@10 : 0.1582    mrr@10 : 0.2932    ndcg@10 : 0.1628    hit@10 : 0.6267    precision@10 : 0.1091
+Thu 09 Apr 2026 12:37:00 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-36-44.pth
+Thu 09 Apr 2026 12:37:01 INFO  epoch 12 training [time: 1.29s, train loss: 6.2947]
+Thu 09 Apr 2026 12:37:03 INFO  epoch 13 training [time: 1.44s, train loss: 6.2197]
+Thu 09 Apr 2026 12:37:03 INFO  epoch 13 evaluating [time: 0.23s, valid_score: 0.300300]
+Thu 09 Apr 2026 12:37:03 INFO  valid result: 
+recall@10 : 0.1592    mrr@10 : 0.3003    ndcg@10 : 0.1672    hit@10 : 0.6341    precision@10 : 0.113
+Thu 09 Apr 2026 12:37:03 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-36-44.pth
+Thu 09 Apr 2026 12:37:04 INFO  epoch 14 training [time: 1.31s, train loss: 6.0995]
+Thu 09 Apr 2026 12:37:06 INFO  epoch 15 training [time: 1.31s, train loss: 5.9690]
+Thu 09 Apr 2026 12:37:06 INFO  epoch 15 evaluating [time: 0.18s, valid_score: 0.308500]
+Thu 09 Apr 2026 12:37:06 INFO  valid result: 
+recall@10 : 0.1625    mrr@10 : 0.3085    ndcg@10 : 0.1725    hit@10 : 0.6405    precision@10 : 0.1179
+Thu 09 Apr 2026 12:37:06 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-36-44.pth
+Thu 09 Apr 2026 12:37:07 INFO  epoch 16 training [time: 1.15s, train loss: 5.9265]
+Thu 09 Apr 2026 12:37:08 INFO  epoch 17 training [time: 1.25s, train loss: 5.7777]
+Thu 09 Apr 2026 12:37:09 INFO  epoch 17 evaluating [time: 0.19s, valid_score: 0.308300]
+Thu 09 Apr 2026 12:37:09 INFO  valid result: 
+recall@10 : 0.1661    mrr@10 : 0.3083    ndcg@10 : 0.1754    hit@10 : 0.6437    precision@10 : 0.1214
+Thu 09 Apr 2026 12:37:10 INFO  epoch 18 training [time: 1.14s, train loss: 5.7573]
+Thu 09 Apr 2026 12:37:11 INFO  epoch 19 training [time: 1.35s, train loss: 5.7455]
+Thu 09 Apr 2026 12:37:11 INFO  epoch 19 evaluating [time: 0.28s, valid_score: 0.305200]
+Thu 09 Apr 2026 12:37:11 INFO  valid result: 
+recall@10 : 0.1675    mrr@10 : 0.3052    ndcg@10 : 0.1759    hit@10 : 0.6511    precision@10 : 0.1231
+Thu 09 Apr 2026 12:37:13 INFO  epoch 20 training [time: 1.36s, train loss: 5.6261]
+Thu 09 Apr 2026 12:37:14 INFO  epoch 21 training [time: 1.55s, train loss: 5.6150]
+Thu 09 Apr 2026 12:37:15 INFO  epoch 21 evaluating [time: 0.31s, valid_score: 0.307800]
+Thu 09 Apr 2026 12:37:15 INFO  valid result: 
+recall@10 : 0.1684    mrr@10 : 0.3078    ndcg@10 : 0.1784    hit@10 : 0.6479    precision@10 : 0.1251
+Thu 09 Apr 2026 12:37:16 INFO  epoch 22 training [time: 1.78s, train loss: 5.5439]
+Thu 09 Apr 2026 12:37:18 INFO  epoch 23 training [time: 1.27s, train loss: 5.4703]
+Thu 09 Apr 2026 12:37:18 INFO  epoch 23 evaluating [time: 0.20s, valid_score: 0.314500]
+Thu 09 Apr 2026 12:37:18 INFO  valid result: 
+recall@10 : 0.1695    mrr@10 : 0.3145    ndcg@10 : 0.1807    hit@10 : 0.6543    precision@10 : 0.1266
+Thu 09 Apr 2026 12:37:18 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-36-44.pth
+Thu 09 Apr 2026 12:37:19 INFO  epoch 24 training [time: 1.27s, train loss: 5.4192]
+Thu 09 Apr 2026 12:37:20 INFO  epoch 25 training [time: 1.27s, train loss: 5.3961]
+Thu 09 Apr 2026 12:37:21 INFO  epoch 25 evaluating [time: 0.19s, valid_score: 0.313300]
+Thu 09 Apr 2026 12:37:21 INFO  valid result: 
+recall@10 : 0.168    mrr@10 : 0.3133    ndcg@10 : 0.1804    hit@10 : 0.6522    precision@10 : 0.1264
+Thu 09 Apr 2026 12:37:22 INFO  epoch 26 training [time: 1.19s, train loss: 5.3206]
+Thu 09 Apr 2026 12:37:23 INFO  epoch 27 training [time: 1.33s, train loss: 5.2955]
+Thu 09 Apr 2026 12:37:23 INFO  epoch 27 evaluating [time: 0.17s, valid_score: 0.316000]
+Thu 09 Apr 2026 12:37:23 INFO  valid result: 
+recall@10 : 0.1698    mrr@10 : 0.316    ndcg@10 : 0.1813    hit@10 : 0.6607    precision@10 : 0.1274
+Thu 09 Apr 2026 12:37:23 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-36-44.pth
+Thu 09 Apr 2026 12:37:25 INFO  epoch 28 training [time: 1.62s, train loss: 5.2467]
+Thu 09 Apr 2026 12:37:27 INFO  epoch 29 training [time: 1.92s, train loss: 5.1355]
+Thu 09 Apr 2026 12:37:27 INFO  epoch 29 evaluating [time: 0.26s, valid_score: 0.317200]
+Thu 09 Apr 2026 12:37:27 INFO  valid result: 
+recall@10 : 0.1701    mrr@10 : 0.3172    ndcg@10 : 0.1831    hit@10 : 0.6681    precision@10 : 0.1295
+Thu 09 Apr 2026 12:37:27 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-36-44.pth
+Thu 09 Apr 2026 12:37:29 INFO  epoch 30 training [time: 1.68s, train loss: 5.1130]
+Thu 09 Apr 2026 12:37:31 INFO  epoch 31 training [time: 1.89s, train loss: 5.1019]
+Thu 09 Apr 2026 12:37:31 INFO  epoch 31 evaluating [time: 0.42s, valid_score: 0.313000]
+Thu 09 Apr 2026 12:37:31 INFO  valid result: 
+recall@10 : 0.1695    mrr@10 : 0.313    ndcg@10 : 0.1821    hit@10 : 0.6617    precision@10 : 0.1287
+Thu 09 Apr 2026 12:37:33 INFO  epoch 32 training [time: 1.87s, train loss: 5.0382]
+Thu 09 Apr 2026 12:37:35 INFO  epoch 33 training [time: 1.73s, train loss: 4.9671]
+Thu 09 Apr 2026 12:37:35 INFO  epoch 33 evaluating [time: 0.22s, valid_score: 0.313900]
+Thu 09 Apr 2026 12:37:35 INFO  valid result: 
+recall@10 : 0.1716    mrr@10 : 0.3139    ndcg@10 : 0.1838    hit@10 : 0.6681    precision@10 : 0.1308
+Thu 09 Apr 2026 12:37:36 INFO  epoch 34 training [time: 1.55s, train loss: 4.9881]
+Thu 09 Apr 2026 12:37:38 INFO  epoch 35 training [time: 1.95s, train loss: 4.9358]
+Thu 09 Apr 2026 12:37:39 INFO  epoch 35 evaluating [time: 0.25s, valid_score: 0.317600]
+Thu 09 Apr 2026 12:37:39 INFO  valid result: 
+recall@10 : 0.173    mrr@10 : 0.3176    ndcg@10 : 0.1863    hit@10 : 0.6734    precision@10 : 0.1328
+Thu 09 Apr 2026 12:37:39 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-36-44.pth
+Thu 09 Apr 2026 12:37:40 INFO  epoch 36 training [time: 1.51s, train loss: 4.8634]
+Thu 09 Apr 2026 12:37:41 INFO  epoch 37 training [time: 1.18s, train loss: 4.8383]
+Thu 09 Apr 2026 12:37:42 INFO  epoch 37 evaluating [time: 0.18s, valid_score: 0.320100]
+Thu 09 Apr 2026 12:37:42 INFO  valid result: 
+recall@10 : 0.1739    mrr@10 : 0.3201    ndcg@10 : 0.1879    hit@10 : 0.6723    precision@10 : 0.1333
+Thu 09 Apr 2026 12:37:42 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-36-44.pth
+Thu 09 Apr 2026 12:37:43 INFO  epoch 38 training [time: 1.15s, train loss: 4.7859]
+Thu 09 Apr 2026 12:37:44 INFO  epoch 39 training [time: 1.07s, train loss: 4.7738]
+Thu 09 Apr 2026 12:37:44 INFO  epoch 39 evaluating [time: 0.19s, valid_score: 0.321600]
+Thu 09 Apr 2026 12:37:44 INFO  valid result: 
+recall@10 : 0.1747    mrr@10 : 0.3216    ndcg@10 : 0.1892    hit@10 : 0.6691    precision@10 : 0.1343
+Thu 09 Apr 2026 12:37:44 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-36-44.pth
+Thu 09 Apr 2026 12:37:44 INFO  Loading model structure and parameters from saved\LightGCN-Apr-09-2026_12-36-44.pth
+Thu 09 Apr 2026 12:37:45 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    29.10 %     |
++-------------+----------------+
+| GPU         |   0.0 / 0.0    |
++-------------+----------------+
+| Memory      | 0.40 G/15.84 G |
++-------------+----------------+
+Thu 09 Apr 2026 12:37:45 INFO  best valid : OrderedDict([('recall@10', 0.1747), ('mrr@10', 0.3216), ('ndcg@10', 0.1892), ('hit@10', 0.6691), ('precision@10', 0.1343)])
+Thu 09 Apr 2026 12:37:45 INFO  test result: OrderedDict([('recall@10', 0.2001), ('mrr@10', 0.4179), ('ndcg@10', 0.2382), ('hit@10', 0.7105), ('precision@10', 0.1601)])
+Thu 09 Apr 2026 12:37:45 WARNING  command line args [--fast] will not be used in RecBole
+Thu 09 Apr 2026 12:37:46 INFO  ['experiment/models/LightGCN/run_lightgcn_experiments.py', '--fast']
+Thu 09 Apr 2026 12:37:46 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = D:\Miniconda\envs\recbole\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = False
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 40
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 2
+stopping_step = 4
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 8192
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+n_layers = 2
+reg_weight = 0.0001
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.GENERAL
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 09 Apr 2026 12:37:46 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Thu 09 Apr 2026 12:37:46 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Thu 09 Apr 2026 12:37:46 INFO  [Evaluation]: eval_batch_size = [8192] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 09 Apr 2026 12:37:47 INFO  LightGCN(
+  (user_embedding): Embedding(944, 64)
+  (item_embedding): Embedding(1683, 64)
+  (mf_loss): BPRLoss()
+  (reg_loss): EmbLoss()
+)
+Trainable parameters: 168128
+Thu 09 Apr 2026 12:37:47 INFO  FLOPs: 0.0
+Thu 09 Apr 2026 12:37:48 INFO  epoch 0 training [time: 1.84s, train loss: 13.8485]
+Thu 09 Apr 2026 12:37:50 INFO  epoch 1 training [time: 1.98s, train loss: 13.6863]
+Thu 09 Apr 2026 12:37:51 INFO  epoch 1 evaluating [time: 0.24s, valid_score: 0.256300]
+Thu 09 Apr 2026 12:37:51 INFO  valid result: 
+recall@10 : 0.1271    mrr@10 : 0.2563    ndcg@10 : 0.1341    hit@10 : 0.579    precision@10 : 0.0911
+Thu 09 Apr 2026 12:37:51 INFO  Saving current: saved\LightGCN-Apr-09-2026_12-37-47.pth
+Thu 09 Apr 2026 12:37:53 INFO  epoch 2 training [time: 1.94s, train loss: 13.0762]
+Thu 09 Apr 2026 12:37:55 INFO  epoch 3 training [time: 1.90s, train loss: 11.8976]
+Thu 09 Apr 2026 12:37:55 INFO  epoch 3 evaluating [time: 0.24s, valid_score: 0.238000]
+Thu 09 Apr 2026 12:37:55 INFO  valid result: 
+recall@10 : 0.1204    mrr@10 : 0.238    ndcg@10 : 0.1251    hit@10 : 0.561    precision@10 : 0.0879
+Thu 09 Apr 2026 12:37:57 INFO  epoch 4 training [time: 2.28s, train loss: 10.4755]
+Thu 09 Apr 2026 12:37:59 INFO  epoch 5 training [time: 1.86s, train loss: 9.1810]
+Thu 09 Apr 2026 12:37:59 INFO  epoch 5 evaluating [time: 0.19s, valid_score: 0.229500]
+Thu 09 Apr 2026 12:37:59 INFO  valid result: 
+recall@10 : 0.1193    mrr@10 : 0.2295    ndcg@10 : 0.1226    hit@10 : 0.5557    precision@10 : 0.0869
+Thu 09 Apr 2026 12:38:01 INFO  epoch 6 training [time: 1.90s, train loss: 8.2216]
+Thu 09 Apr 2026 12:38:03 INFO  epoch 7 training [time: 1.85s, train loss: 7.7122]
+Thu 09 Apr 2026 12:38:03 INFO  epoch 7 evaluating [time: 0.17s, valid_score: 0.230600]
+Thu 09 Apr 2026 12:38:03 INFO  valid result: 
+recall@10 : 0.1197    mrr@10 : 0.2306    ndcg@10 : 0.1237    hit@10 : 0.5567    precision@10 : 0.0873
+Thu 09 Apr 2026 12:38:05 INFO  epoch 8 training [time: 1.93s, train loss: 7.3327]
+Thu 09 Apr 2026 12:38:07 INFO  epoch 9 training [time: 1.96s, train loss: 7.1225]
+Thu 09 Apr 2026 12:38:07 INFO  epoch 9 evaluating [time: 0.18s, valid_score: 0.238000]
+Thu 09 Apr 2026 12:38:07 INFO  valid result: 
+recall@10 : 0.1203    mrr@10 : 0.238    ndcg@10 : 0.1256    hit@10 : 0.5589    precision@10 : 0.0879
+Thu 09 Apr 2026 12:38:09 INFO  epoch 10 training [time: 1.88s, train loss: 6.9862]
+Thu 09 Apr 2026 12:38:11 INFO  epoch 11 training [time: 1.91s, train loss: 6.9195]
+Thu 09 Apr 2026 12:38:11 INFO  epoch 11 evaluating [time: 0.20s, valid_score: 0.245100]
+Thu 09 Apr 2026 12:38:11 INFO  valid result: 
+recall@10 : 0.1205    mrr@10 : 0.2451    ndcg@10 : 0.1275    hit@10 : 0.562    precision@10 : 0.0888
+Thu 09 Apr 2026 12:38:11 INFO  Finished training, best eval result in epoch 1
+Thu 09 Apr 2026 12:38:11 INFO  Loading model structure and parameters from saved\LightGCN-Apr-09-2026_12-37-47.pth
+Thu 09 Apr 2026 12:38:12 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    15.30 %     |
++-------------+----------------+
+| GPU         |   0.0 / 0.0    |
++-------------+----------------+
+| Memory      | 0.40 G/15.84 G |
++-------------+----------------+
+Thu 09 Apr 2026 12:38:12 INFO  best valid : OrderedDict([('recall@10', 0.1271), ('mrr@10', 0.2563), ('ndcg@10', 0.1341), ('hit@10', 0.579), ('precision@10', 0.0911)])
+Thu 09 Apr 2026 12:38:12 INFO  test result: OrderedDict([('recall@10', 0.136), ('mrr@10', 0.2803), ('ndcg@10', 0.1511), ('hit@10', 0.596), ('precision@10', 0.1041)])
