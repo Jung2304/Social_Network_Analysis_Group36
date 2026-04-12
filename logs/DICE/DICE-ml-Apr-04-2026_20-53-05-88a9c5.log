@@ -1,0 +1,278 @@
+Sat 04 Apr 2026 20:53:05 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = dataset/ml
+checkpoint_dir = saved
+show_progress = False
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.005
+train_neg_sample_args = {'distribution': 'popularity', 'sample_num': 2, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'mode': 'full', 'order': 'RO', 'group_by': 'user', 'split': {'RS': [0.8, 0.1, 0.1]}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp', 'intervene_mask']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = ['train', 'valid', 'test']
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole_debias
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.DEBIAS
+embedding_size = 16
+dis_loss = L1
+dis_pen = 0.005
+int_weight = 0.5
+pop_weight = 0.0001
+adaptive = False
+decay = 0.9
+MASK_FIELD = mask
+eval_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+
+
+Sat 04 Apr 2026 20:53:05 INFO  ml
+The number of users: 944
+Average actions of users: 79.33934252386003
+The number of items: 1683
+Average actions of items: 44.480975029726515
+The number of inters: 74817
+The sparsity of the dataset: 95.29083204930663%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp', 'intervene_mask']
+Sat 04 Apr 2026 20:53:05 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'popularity', 'sample_num': 2, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Sat 04 Apr 2026 20:53:05 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'mode': 'full', 'order': 'RO', 'group_by': 'user', 'split': {'RS': [0.8, 0.1, 0.1]}}]
+Sat 04 Apr 2026 20:53:05 INFO  DICE(
+  (users_int): Embedding(944, 16)
+  (items_int): Embedding(1683, 16)
+  (users_pop): Embedding(944, 16)
+  (items_pop): Embedding(1683, 16)
+  (criterion_discrepancy): L1Loss()
+)
+Trainable parameters: 84064
+Sat 04 Apr 2026 20:53:05 INFO  FLOPs: 0.0
+Sat 04 Apr 2026 20:53:07 INFO  epoch 0 training [time: 0.34s, train loss: 51.3077]
+Sat 04 Apr 2026 20:53:07 INFO  epoch 0 evaluating [time: 0.12s, valid_score: 0.022700]
+Sat 04 Apr 2026 20:53:07 INFO  valid result: 
+recall@10 : 0.0257    mrr@10 : 0.046    ndcg@10 : 0.0227    hit@10 : 0.1402    precision@10 : 0.0152
+Sat 04 Apr 2026 20:53:07 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:07 INFO  epoch 1 training [time: 0.33s, train loss: 36.5388]
+Sat 04 Apr 2026 20:53:07 INFO  epoch 1 evaluating [time: 0.12s, valid_score: 0.030900]
+Sat 04 Apr 2026 20:53:07 INFO  valid result: 
+recall@10 : 0.0375    mrr@10 : 0.0578    ndcg@10 : 0.0309    hit@10 : 0.1758    precision@10 : 0.0185
+Sat 04 Apr 2026 20:53:07 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:07 INFO  epoch 2 training [time: 0.31s, train loss: 24.8027]
+Sat 04 Apr 2026 20:53:08 INFO  epoch 2 evaluating [time: 0.12s, valid_score: 0.034800]
+Sat 04 Apr 2026 20:53:08 INFO  valid result: 
+recall@10 : 0.0453    mrr@10 : 0.0611    ndcg@10 : 0.0348    hit@10 : 0.1958    precision@10 : 0.0215
+Sat 04 Apr 2026 20:53:08 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:08 INFO  epoch 3 training [time: 0.33s, train loss: 21.2411]
+Sat 04 Apr 2026 20:53:08 INFO  epoch 3 evaluating [time: 0.12s, valid_score: 0.041100]
+Sat 04 Apr 2026 20:53:08 INFO  valid result: 
+recall@10 : 0.056    mrr@10 : 0.0688    ndcg@10 : 0.0411    hit@10 : 0.2202    precision@10 : 0.0245
+Sat 04 Apr 2026 20:53:08 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:08 INFO  epoch 4 training [time: 0.33s, train loss: 18.5995]
+Sat 04 Apr 2026 20:53:09 INFO  epoch 4 evaluating [time: 0.12s, valid_score: 0.046700]
+Sat 04 Apr 2026 20:53:09 INFO  valid result: 
+recall@10 : 0.0636    mrr@10 : 0.0771    ndcg@10 : 0.0467    hit@10 : 0.2458    precision@10 : 0.0279
+Sat 04 Apr 2026 20:53:09 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:09 INFO  epoch 5 training [time: 0.35s, train loss: 16.7209]
+Sat 04 Apr 2026 20:53:09 INFO  epoch 5 evaluating [time: 0.12s, valid_score: 0.048000]
+Sat 04 Apr 2026 20:53:09 INFO  valid result: 
+recall@10 : 0.0664    mrr@10 : 0.0768    ndcg@10 : 0.048    hit@10 : 0.2547    precision@10 : 0.0297
+Sat 04 Apr 2026 20:53:09 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:09 INFO  epoch 6 training [time: 0.34s, train loss: 15.5001]
+Sat 04 Apr 2026 20:53:09 INFO  epoch 6 evaluating [time: 0.13s, valid_score: 0.050400]
+Sat 04 Apr 2026 20:53:09 INFO  valid result: 
+recall@10 : 0.0697    mrr@10 : 0.0829    ndcg@10 : 0.0504    hit@10 : 0.2692    precision@10 : 0.032
+Sat 04 Apr 2026 20:53:09 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:10 INFO  epoch 7 training [time: 0.33s, train loss: 14.4927]
+Sat 04 Apr 2026 20:53:10 INFO  epoch 7 evaluating [time: 0.14s, valid_score: 0.054200]
+Sat 04 Apr 2026 20:53:10 INFO  valid result: 
+recall@10 : 0.0728    mrr@10 : 0.09    ndcg@10 : 0.0542    hit@10 : 0.2814    precision@10 : 0.0331
+Sat 04 Apr 2026 20:53:10 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:10 INFO  epoch 8 training [time: 0.35s, train loss: 13.5281]
+Sat 04 Apr 2026 20:53:10 INFO  epoch 8 evaluating [time: 0.12s, valid_score: 0.058100]
+Sat 04 Apr 2026 20:53:10 INFO  valid result: 
+recall@10 : 0.0762    mrr@10 : 0.1024    ndcg@10 : 0.0581    hit@10 : 0.2981    precision@10 : 0.0352
+Sat 04 Apr 2026 20:53:10 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:11 INFO  epoch 9 training [time: 0.33s, train loss: 12.8654]
+Sat 04 Apr 2026 20:53:11 INFO  epoch 9 evaluating [time: 0.13s, valid_score: 0.055800]
+Sat 04 Apr 2026 20:53:11 INFO  valid result: 
+recall@10 : 0.074    mrr@10 : 0.0964    ndcg@10 : 0.0558    hit@10 : 0.2914    precision@10 : 0.035
+Sat 04 Apr 2026 20:53:11 INFO  epoch 10 training [time: 0.40s, train loss: 12.2607]
+Sat 04 Apr 2026 20:53:11 INFO  epoch 10 evaluating [time: 0.12s, valid_score: 0.057900]
+Sat 04 Apr 2026 20:53:11 INFO  valid result: 
+recall@10 : 0.0727    mrr@10 : 0.1058    ndcg@10 : 0.0579    hit@10 : 0.2892    precision@10 : 0.0341
+Sat 04 Apr 2026 20:53:12 INFO  epoch 11 training [time: 0.36s, train loss: 11.4521]
+Sat 04 Apr 2026 20:53:12 INFO  epoch 11 evaluating [time: 0.12s, valid_score: 0.057800]
+Sat 04 Apr 2026 20:53:12 INFO  valid result: 
+recall@10 : 0.071    mrr@10 : 0.1066    ndcg@10 : 0.0578    hit@10 : 0.2925    precision@10 : 0.0345
+Sat 04 Apr 2026 20:53:12 INFO  epoch 12 training [time: 0.32s, train loss: 10.9362]
+Sat 04 Apr 2026 20:53:12 INFO  epoch 12 evaluating [time: 0.12s, valid_score: 0.061400]
+Sat 04 Apr 2026 20:53:12 INFO  valid result: 
+recall@10 : 0.0802    mrr@10 : 0.1071    ndcg@10 : 0.0614    hit@10 : 0.3037    precision@10 : 0.0364
+Sat 04 Apr 2026 20:53:12 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:13 INFO  epoch 13 training [time: 0.32s, train loss: 10.2999]
+Sat 04 Apr 2026 20:53:13 INFO  epoch 13 evaluating [time: 0.11s, valid_score: 0.061200]
+Sat 04 Apr 2026 20:53:13 INFO  valid result: 
+recall@10 : 0.0802    mrr@10 : 0.1055    ndcg@10 : 0.0612    hit@10 : 0.307    precision@10 : 0.0368
+Sat 04 Apr 2026 20:53:13 INFO  epoch 14 training [time: 0.32s, train loss: 10.0731]
+Sat 04 Apr 2026 20:53:13 INFO  epoch 14 evaluating [time: 0.12s, valid_score: 0.065100]
+Sat 04 Apr 2026 20:53:13 INFO  valid result: 
+recall@10 : 0.0865    mrr@10 : 0.1122    ndcg@10 : 0.0651    hit@10 : 0.327    precision@10 : 0.0393
+Sat 04 Apr 2026 20:53:13 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:14 INFO  epoch 15 training [time: 0.34s, train loss: 9.5204]
+Sat 04 Apr 2026 20:53:14 INFO  epoch 15 evaluating [time: 0.12s, valid_score: 0.064800]
+Sat 04 Apr 2026 20:53:14 INFO  valid result: 
+recall@10 : 0.0857    mrr@10 : 0.1091    ndcg@10 : 0.0648    hit@10 : 0.3248    precision@10 : 0.0404
+Sat 04 Apr 2026 20:53:14 INFO  epoch 16 training [time: 0.32s, train loss: 9.2340]
+Sat 04 Apr 2026 20:53:14 INFO  epoch 16 evaluating [time: 0.12s, valid_score: 0.061900]
+Sat 04 Apr 2026 20:53:14 INFO  valid result: 
+recall@10 : 0.0805    mrr@10 : 0.1081    ndcg@10 : 0.0619    hit@10 : 0.3248    precision@10 : 0.038
+Sat 04 Apr 2026 20:53:14 INFO  epoch 17 training [time: 0.34s, train loss: 8.8125]
+Sat 04 Apr 2026 20:53:15 INFO  epoch 17 evaluating [time: 0.12s, valid_score: 0.063900]
+Sat 04 Apr 2026 20:53:15 INFO  valid result: 
+recall@10 : 0.0828    mrr@10 : 0.1086    ndcg@10 : 0.0639    hit@10 : 0.3281    precision@10 : 0.0398
+Sat 04 Apr 2026 20:53:15 INFO  epoch 18 training [time: 0.31s, train loss: 8.3942]
+Sat 04 Apr 2026 20:53:15 INFO  epoch 18 evaluating [time: 0.12s, valid_score: 0.064300]
+Sat 04 Apr 2026 20:53:15 INFO  valid result: 
+recall@10 : 0.082    mrr@10 : 0.1107    ndcg@10 : 0.0643    hit@10 : 0.3237    precision@10 : 0.0396
+Sat 04 Apr 2026 20:53:15 INFO  epoch 19 training [time: 0.32s, train loss: 8.1938]
+Sat 04 Apr 2026 20:53:15 INFO  epoch 19 evaluating [time: 0.11s, valid_score: 0.065300]
+Sat 04 Apr 2026 20:53:15 INFO  valid result: 
+recall@10 : 0.0822    mrr@10 : 0.1148    ndcg@10 : 0.0653    hit@10 : 0.3204    precision@10 : 0.0396
+Sat 04 Apr 2026 20:53:15 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:16 INFO  epoch 20 training [time: 0.31s, train loss: 7.8948]
+Sat 04 Apr 2026 20:53:16 INFO  epoch 20 evaluating [time: 0.12s, valid_score: 0.071100]
+Sat 04 Apr 2026 20:53:16 INFO  valid result: 
+recall@10 : 0.0884    mrr@10 : 0.1232    ndcg@10 : 0.0711    hit@10 : 0.3415    precision@10 : 0.0426
+Sat 04 Apr 2026 20:53:16 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:16 INFO  epoch 21 training [time: 0.34s, train loss: 7.7972]
+Sat 04 Apr 2026 20:53:16 INFO  epoch 21 evaluating [time: 0.12s, valid_score: 0.069500]
+Sat 04 Apr 2026 20:53:16 INFO  valid result: 
+recall@10 : 0.089    mrr@10 : 0.1176    ndcg@10 : 0.0695    hit@10 : 0.3426    precision@10 : 0.0424
+Sat 04 Apr 2026 20:53:17 INFO  epoch 22 training [time: 0.30s, train loss: 7.5670]
+Sat 04 Apr 2026 20:53:17 INFO  epoch 22 evaluating [time: 0.12s, valid_score: 0.072200]
+Sat 04 Apr 2026 20:53:17 INFO  valid result: 
+recall@10 : 0.0934    mrr@10 : 0.1177    ndcg@10 : 0.0722    hit@10 : 0.3426    precision@10 : 0.0429
+Sat 04 Apr 2026 20:53:17 INFO  Saving current: saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:17 INFO  epoch 23 training [time: 0.36s, train loss: 7.4141]
+Sat 04 Apr 2026 20:53:17 INFO  epoch 23 evaluating [time: 0.12s, valid_score: 0.066500]
+Sat 04 Apr 2026 20:53:17 INFO  valid result: 
+recall@10 : 0.0875    mrr@10 : 0.1095    ndcg@10 : 0.0665    hit@10 : 0.3304    precision@10 : 0.0416
+Sat 04 Apr 2026 20:53:18 INFO  epoch 24 training [time: 0.34s, train loss: 7.1509]
+Sat 04 Apr 2026 20:53:18 INFO  epoch 24 evaluating [time: 0.13s, valid_score: 0.066300]
+Sat 04 Apr 2026 20:53:18 INFO  valid result: 
+recall@10 : 0.0852    mrr@10 : 0.1135    ndcg@10 : 0.0663    hit@10 : 0.3248    precision@10 : 0.0398
+Sat 04 Apr 2026 20:53:18 INFO  epoch 25 training [time: 0.35s, train loss: 7.0508]
+Sat 04 Apr 2026 20:53:18 INFO  epoch 25 evaluating [time: 0.12s, valid_score: 0.063600]
+Sat 04 Apr 2026 20:53:18 INFO  valid result: 
+recall@10 : 0.0834    mrr@10 : 0.1061    ndcg@10 : 0.0636    hit@10 : 0.317    precision@10 : 0.0388
+Sat 04 Apr 2026 20:53:18 INFO  epoch 26 training [time: 0.31s, train loss: 6.8843]
+Sat 04 Apr 2026 20:53:19 INFO  epoch 26 evaluating [time: 0.12s, valid_score: 0.064600]
+Sat 04 Apr 2026 20:53:19 INFO  valid result: 
+recall@10 : 0.0819    mrr@10 : 0.1121    ndcg@10 : 0.0646    hit@10 : 0.3237    precision@10 : 0.0399
+Sat 04 Apr 2026 20:53:19 INFO  epoch 27 training [time: 0.33s, train loss: 6.6528]
+Sat 04 Apr 2026 20:53:19 INFO  epoch 27 evaluating [time: 0.12s, valid_score: 0.065500]
+Sat 04 Apr 2026 20:53:19 INFO  valid result: 
+recall@10 : 0.0828    mrr@10 : 0.1099    ndcg@10 : 0.0655    hit@10 : 0.3126    precision@10 : 0.0393
+Sat 04 Apr 2026 20:53:19 INFO  epoch 28 training [time: 0.33s, train loss: 6.5583]
+Sat 04 Apr 2026 20:53:19 INFO  epoch 28 evaluating [time: 0.12s, valid_score: 0.067200]
+Sat 04 Apr 2026 20:53:19 INFO  valid result: 
+recall@10 : 0.0881    mrr@10 : 0.1098    ndcg@10 : 0.0672    hit@10 : 0.3226    precision@10 : 0.0407
+Sat 04 Apr 2026 20:53:20 INFO  epoch 29 training [time: 0.33s, train loss: 6.5105]
+Sat 04 Apr 2026 20:53:20 INFO  epoch 29 evaluating [time: 0.11s, valid_score: 0.066300]
+Sat 04 Apr 2026 20:53:20 INFO  valid result: 
+recall@10 : 0.091    mrr@10 : 0.1092    ndcg@10 : 0.0663    hit@10 : 0.3281    precision@10 : 0.0412
+Sat 04 Apr 2026 20:53:20 INFO  epoch 30 training [time: 0.32s, train loss: 6.3813]
+Sat 04 Apr 2026 20:53:20 INFO  epoch 30 evaluating [time: 0.11s, valid_score: 0.067100]
+Sat 04 Apr 2026 20:53:20 INFO  valid result: 
+recall@10 : 0.0886    mrr@10 : 0.1129    ndcg@10 : 0.0671    hit@10 : 0.3293    precision@10 : 0.0406
+Sat 04 Apr 2026 20:53:21 INFO  epoch 31 training [time: 0.32s, train loss: 6.2713]
+Sat 04 Apr 2026 20:53:21 INFO  epoch 31 evaluating [time: 0.12s, valid_score: 0.065500]
+Sat 04 Apr 2026 20:53:21 INFO  valid result: 
+recall@10 : 0.0858    mrr@10 : 0.1135    ndcg@10 : 0.0655    hit@10 : 0.3248    precision@10 : 0.0402
+Sat 04 Apr 2026 20:53:21 INFO  epoch 32 training [time: 0.32s, train loss: 6.1693]
+Sat 04 Apr 2026 20:53:21 INFO  epoch 32 evaluating [time: 0.12s, valid_score: 0.064500]
+Sat 04 Apr 2026 20:53:21 INFO  valid result: 
+recall@10 : 0.086    mrr@10 : 0.1095    ndcg@10 : 0.0645    hit@10 : 0.3204    precision@10 : 0.0396
+Sat 04 Apr 2026 20:53:22 INFO  epoch 33 training [time: 0.31s, train loss: 6.0448]
+Sat 04 Apr 2026 20:53:22 INFO  epoch 33 evaluating [time: 0.11s, valid_score: 0.065100]
+Sat 04 Apr 2026 20:53:22 INFO  valid result: 
+recall@10 : 0.0881    mrr@10 : 0.109    ndcg@10 : 0.0651    hit@10 : 0.3237    precision@10 : 0.0396
+Sat 04 Apr 2026 20:53:22 INFO  Finished training, best eval result in epoch 22
+Sat 04 Apr 2026 20:53:22 INFO  Loading model structure and parameters from saved\DICE-Apr-04-2026_20-53-05.pth
+Sat 04 Apr 2026 20:53:22 INFO  best valid : OrderedDict({'recall@10': 0.0934, 'mrr@10': 0.1177, 'ndcg@10': 0.0722, 'hit@10': 0.3426, 'precision@10': 0.0429})
+Sat 04 Apr 2026 20:53:22 INFO  test result: OrderedDict({'recall@10': 0.0833, 'mrr@10': 0.1985, 'ndcg@10': 0.0991, 'hit@10': 0.5393, 'precision@10': 0.08})

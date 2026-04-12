@@ -1,0 +1,7 @@
+train_path: "processed/ml/ml.train.inter"
+test_path: "processed/ml/ml.test.inter"
+embedding_dim: 16
+use_hybrid: true
+loss_type: "warp"
+epochs: 50
+batch_size: 2048

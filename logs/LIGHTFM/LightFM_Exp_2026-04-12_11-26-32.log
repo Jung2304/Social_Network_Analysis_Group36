@@ -1,0 +1,14 @@
+2026-04-12 11:26:32,698 - INFO - --- Starting Experiment with config: lightfm_hybrid.yaml ---
+2026-04-12 11:26:33,527 - INFO - Training for 50 epochs...
+2026-04-12 11:26:34,070 - INFO - Epoch 0 | Loss: 6.7556
+2026-04-12 11:26:47,298 - INFO - Epoch 9 | Loss: 5.6502
+2026-04-12 11:27:03,101 - INFO - Epoch 19 | Loss: 5.7159
+2026-04-12 11:27:18,543 - INFO - Epoch 29 | Loss: 5.8965
+2026-04-12 11:27:34,450 - INFO - Epoch 39 | Loss: 5.8805
+2026-04-12 11:27:49,998 - INFO - Epoch 49 | Loss: 5.9193
+2026-04-12 11:27:51,366 - INFO - Final Metrics for lightfm_hybrid.yaml:
+2026-04-12 11:27:51,366 - INFO - Recall@10: 0.0434
+2026-04-12 11:27:51,366 - INFO - MRR@10: 0.1003
+2026-04-12 11:27:51,366 - INFO - NDCG@10: 0.0458
+2026-04-12 11:27:51,370 - INFO - --- Finished Experiment: lightfm_hybrid.yaml ---
+
