@@ -1,0 +1,24 @@
+data_path: dataset/
+dataset: poetry
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: item_id
+TIME_FIELD: timestamp
+load_col:
+  inter:
+  - user_id
+  - item_id
+  - timestamp
+eval_args:
+  split:
+    RS:
+    - 8
+    - 1
+    - 1
+  group_by: user
+  order: TO
+metrics:
+- Recall
+- NDCG
+- MRR
+topk:
+- 10
