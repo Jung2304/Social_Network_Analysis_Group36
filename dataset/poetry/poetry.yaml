@@ -9,13 +9,10 @@ load_col:
   - item_id
   - timestamp
 eval_args:
-  split:
-    RS:
-    - 8
-    - 1
-    - 1
+  split: {'TS': [0.7, 0.1, 0.2]}
   group_by: user
   order: TO
+  mode: full
 metrics:
 - Recall
 - NDCG
