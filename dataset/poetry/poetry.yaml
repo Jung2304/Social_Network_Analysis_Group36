@@ -15,7 +15,11 @@ eval_args:
   mode: full
 metrics:
 - Recall
+- Precision
 - NDCG
 - MRR
+- Hit
 topk:
 - 10
+seed: 2020
+reproducibility: True
