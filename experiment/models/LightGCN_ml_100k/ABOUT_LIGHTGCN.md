@@ -91,7 +91,7 @@ A RecBole/PyTorch checkpoint typically contains:
 - **Evaluation reuse**: re-run test/evaluation from the best checkpoint.
 - **Training continuation**: resume from a previous state if needed.
 
-### 1.4 `run_lightgcn.py`
+### 1.4 `run_lightgcn_experiments.py`
 
 #### Purpose
 Minimal launcher script that calls RecBole quick start API:
