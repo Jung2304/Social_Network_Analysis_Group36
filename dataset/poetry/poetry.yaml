@@ -1,25 +1,31 @@
 data_path: dataset/
 dataset: poetry
+
 USER_ID_FIELD: user_id
 ITEM_ID_FIELD: item_id
 TIME_FIELD: timestamp
+
 load_col:
   inter:
   - user_id
   - item_id
   - timestamp
+  
 eval_args:
   split: {'TS': [0.7, 0.1, 0.2]}
   group_by: user
   order: TO
   mode: full
+  
 metrics:
 - Recall
 - Precision
 - NDCG
 - MRR
 - Hit
-topk:
-- 10
+topk: [5, 10, 20]
+
+valid_metric: NDCG@10
+
 seed: 2020
 reproducibility: True
