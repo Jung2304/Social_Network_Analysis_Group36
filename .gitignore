@@ -2,4 +2,4 @@ lightfm-env/
 data/
 models/BPR
 models/MF
-
+models/LightGCN_ml_100k
