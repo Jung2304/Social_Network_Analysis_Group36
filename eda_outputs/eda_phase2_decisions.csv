@@ -1,0 +1,6 @@
+﻿decision,question,answer,key_metric
+1,Implicit hay Hybrid?,HYBRID (implicit + explicit),% rating=0 = 55.1%
+2,Filter user (min_user_interaction)?,min_user_interaction = 8,% users < 8 interactions = 78.6%
+3,Filter item (min_item_interaction)?,min_item_interaction = 8,% items < 8 interactions = 37.5%
+4,Time-based split?,RANDOM SPLIT (chấp nhận được),Data phân bố tương đối đều qua các năm (45.6% trong 3 năm cuối)
+5,Genres top-k?,top-k = 5,avg genres/book = 42.64

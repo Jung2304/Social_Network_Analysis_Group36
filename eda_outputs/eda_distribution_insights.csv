@@ -1,0 +1,7 @@
+﻿insight,value
+users_lt5_pct,66.46
+users_lt10_pct,83.14
+items_lt5_pct,24.85
+items_lt10_pct,44.01
+user_long_tail,True
+item_long_tail,True

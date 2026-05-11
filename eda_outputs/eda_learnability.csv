@@ -1,0 +1,4 @@
+﻿metric,before,after
+sparsity,0.9998018,0.99882271
+cold_user_ratio,0.6646,0.0
+cold_item_ratio,0.2485,0.0

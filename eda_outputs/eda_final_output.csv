@@ -1,0 +1,11 @@
+﻿output,value
+Filtered Users,79153
+Filtered Items,20700
+Filtered Interactions,1928959
+Filtered Density,0.00117729
+min_user_interaction,8
+min_item_interaction,8
+k_core,8
+genres_top_k,top-k = 5
+use_time_split,RANDOM SPLIT (chấp nhận được)
+interaction_mode,HYBRID (implicit + explicit)

@@ -1,0 +1,4 @@
+﻿method,recommended_k,why
+elbow_range,"(7, 10)",Kneedle on retention curve
+sparsity_filter,"[7, 8, 10]",Keep k with sparsity <= Q3 (0.999343)
+tradeoff_final,8,50% interaction + 35% density + 15% user retention
