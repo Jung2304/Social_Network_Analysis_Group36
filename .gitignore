@@ -1,0 +1,6 @@
+# Data files
+/goodreads_books_poetry.json
+/goodreads_interactions_poetry.json
+
+# Phase 3 generated datasets
+/phase3_outputs/*.json
