@@ -1,0 +1,40 @@
+{
+  "users": 79153,
+  "items": 20700,
+  "interactions": 1928959,
+  "density": 0.00117729,
+  "duplicates": 0,
+  "missing_rating": 0,
+  "invalid_rating": 0,
+  "out_of_vocab": 0,
+  "eligible_users": 79153,
+  "min_interactions": 5,
+  "test_ratio": 0.2,
+  "random_seed": 42,
+  "rating_distribution": {
+    "0.0": 1118744,
+    "3.0": 156916,
+    "5.0": 329534,
+    "4.0": 269134,
+    "2.0": 41866,
+    "1.0": 12765
+  },
+  "weight_distribution": {
+    "0.5": 1118744,
+    "3.0": 156916,
+    "5.0": 329534,
+    "4.0": 269134,
+    "2.0": 41866,
+    "1.0": 12765
+  },
+  "weight_map": {
+    "0": 0.5,
+    "1": 1.0,
+    "2": 2.0,
+    "3": 3.0,
+    "4": 4.0,
+    "5": 5.0
+  },
+  "train_interactions": 1539303,
+  "test_interactions": 389656
+}

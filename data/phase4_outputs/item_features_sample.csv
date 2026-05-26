@@ -1,0 +1,21 @@
+book_id,num_features,features
+22466716,3,genre:fiction|genre:poetry|year:2010s
+926662,3,author:18540|genre:poetry|year:2000s
+926667,6,author:18540|genre:fiction|genre:literature|genre:poems|genre:poetry|year:1960s
+29065952,2,genre:poetry|year:2010s
+346381,4,genre:literature|genre:poems|genre:poetry|year:2000s
+598195,6,author:516921|genre:fiction|genre:literature|genre:non fiction|genre:poetry|year:1980s
+24849837,2,genre:poetry|year:2010s
+554372,4,author:30195|genre:fiction|genre:poetry|year:unknown
+17510247,7,author:17108664|author:75055|genre:literature|genre:non fiction|genre:poems|genre:poetry|year:1990s
+17729612,4,author:14002590|genre:poems|genre:poetry|year:2000s
+250810,2,genre:fiction|year:unknown
+8077005,5,author:683293|genre:non fiction|genre:poems|genre:poetry|year:2010s
+35288488,2,genre:poetry|year:unknown
+24874449,6,author:5031312|genre:fiction|genre:literature|genre:non fiction|genre:poetry|year:2010s
+2260201,7,author:11294|author:5158478|genre:fiction|genre:literature|genre:non fiction|genre:poetry|year:unknown
+269677,2,genre:poetry|year:1990s
+17562598,5,author:44150|genre:fiction|genre:literature|genre:poetry|year:2000s
+6635610,7,author:2742325|author:49338|genre:fiction|genre:literature|genre:poems|genre:poetry|year:1990s
+34381389,3,genre:fiction|genre:poetry|year:2010s
+13423864,4,genre:fiction|genre:poems|genre:poetry|year:1980s
